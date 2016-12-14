@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>title</title>
+  <meta name="author" content="name">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+
+  <style type="text/css">
+*, html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+#cf {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.full {
+    position:absolute;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    -webkit-transition: opacity 2s ease-in-out;
+       -moz-transition: opacity 2s ease-in-out;
+         -o-transition: opacity 2s ease-in-out;
+            transition: opacity 2s ease-in-out;
+}
+
+.credits {
+    position:absolute;
+    width: auto;
+    height: auto;
+    bottom:0;
+    right:0;
+    padding: 10px;
+    text-shadow: 0 0 0.8em rgba(0, 0, 0, 0.6), 0 0 0.8em rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.08em;
+}
+
+.credits a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.credits a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+div.like_photo {
+    border: 1px solid rgba(165, 165, 165, 0.29);
+    padding: 4px;
+    display: inline-block;
+    width: auto;
+    border-radius: 4px;
+    background: rgba(179, 179, 179, 0.4);
+}
+
+div.like_photo:hover {
+    border: 1px solid rgba(165, 165, 165, 0.69);
+    background: rgba(179, 179, 179, 0.8);
+}
+
+a.like_photo {
+    text-shadow: none;
+}
+
+.like_photo svg {
+    vertical-align: top;
+    overflow: hidden;
+    padding-top: 1px;
+    width: 12px;
+    fill: rgba(255, 93, 93, 0.7);
+}
+
+.like_photo svg:hover {
+    fill: rgba(255, 93, 93, 1);
+}
+  </style>
+  </head>
+<body>
+    <div id="cf">
+      <div id="div2" class="full" style="display: none;">
+        <div class="credits">
+            <span class="location"></span> Photo by <a href="#" class="photo_by" target="_blank"></a> | <a target="_blank" href="https://unsplash.com/">Unsplash</a>
+            <div class="like_photo">
+                <a title="Like photo" class="like_photo" href="#" target="_blank">
+                    <span>
+                        <svg version="1.1" viewBox="0 0 32 32" aria-labelledby="icon-title-131 icon-desc-132" aria-hidden="false"><path d="M17.4 29c-.8.8-2 .8-2.8 0l-12.3-12.8c-3.1-3.1-3.1-8.2 0-11.4 3.1-3.1 8.2-3.1 11.3 0l2.4 2.8 2.3-2.8c3.1-3.1 8.2-3.1 11.3 0 3.1 3.1 3.1 8.2 0 11.4l-12.2 12.8z"></path></svg>
+                    </span>
+                    <span class="likes_count"></span>
+                </a>
+            </div>
+        </div>
+      </div>
+
+      <div id="div1" class="full" style="background-image: url('https://source.unsplash.com/category/nature/1920x1080/daily')">
+        <div class="credits">
+            <span class="location"></span> Photo by <a href="#" class="photo_by" target="_blank"></a> | <a target="_blank" href="https://unsplash.com/">Unsplash</a>
+            <div class="like_photo">
+                <a title="Like photo" class="like_photo" href="#" target="_blank">
+                    <span>
+                        <svg version="1.1" viewBox="0 0 32 32" aria-labelledby="icon-title-131 icon-desc-132" aria-hidden="false"><path d="M17.4 29c-.8.8-2 .8-2.8 0l-12.3-12.8c-3.1-3.1-3.1-8.2 0-11.4 3.1-3.1 8.2-3.1 11.3 0l2.4 2.8 2.3-2.8c3.1-3.1 8.2-3.1 11.3 0 3.1 3.1 3.1 8.2 0 11.4l-12.2 12.8z"></path></svg>
+                    </span>
+                    <span class="likes_count"></span>
+                </a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+
+var cache = [];
+
+function getNext(callback) {
+    if (cache.length > 0) {
+        callback( cache.shift() );
+    } else {
+        $.getJSON( "https://api.unsplash.com/photos/random?collections=140375,139015,210849,346491,334800&w=1920&h=1080&orientation=landscape&client_id=a819ed546b5826ca71ac2c81d67bf0f287a3b1f344ce2fabd69b54ce53cc4af2&count=30", function( data ) {
+            for (var i = 0; i < data.length; i++) {
+                cache.push( data[i] );
+            }
+
+            getNext(callback);
+        });
+    }
+}
+
+function swap(current, next) {
+    getNext(function( data ) {
+        $(next + " .likes_count").text( data.likes );
+        $(next + " .like_photo").attr("href", data.links.html );
+        $(next + " .photo_by").text( data.user.name );
+        $(next + " .photo_by").attr("href", data.user.links.html );
+
+        if (data.location != null) {
+            $(next + " .location").text( data.location.title + ". " );
+        } else {
+            $(next + " .location").text("");
+        }
+
+        imgSrc = data.urls.custom;
+
+        var imgPreload = new Image();
+        $(imgPreload).attr({
+            src: imgSrc
+        });
+
+        $(imgPreload).on('load', function() {
+            $(next).css("background-image", "url('" + imgSrc + "')");
+
+            if (current === "#div1") {
+                $(current).css('opacity', '0');
+            } else {
+                $(next).css('opacity', '1');
+            }
+
+
+        }).each(function() {
+            if(this.complete) $(this).load();
+        });
+
+        setTimeout(function() {
+            swap(next, current) //args inverted
+        }, 15000);
+
+    }); //end getNext
+} //end swap
+
+$(document).ready(function () {
+    setTimeout(function() {
+        $('#div2').toggle();
+        swap('#div1', '#div2')
+    }, 5000);
+
+    var idleMouseTimer;
+    var forceMouseHide = false;
+
+    $("body").css('cursor', 'none');
+
+    $("body").mousemove(function(ev) {
+        if(!forceMouseHide) {
+            $("body").css('cursor', '');
+
+            clearTimeout(idleMouseTimer);
+
+            idleMouseTimer = setTimeout(function() {
+                $("body").css('cursor', 'none');
+
+                forceMouseHide = true;
+                setTimeout(function() {
+                    forceMouseHide = false;
+                }, 200);
+            }, 3000);
+        }
+    });
+});
+</script>
+</body>
+</html>
