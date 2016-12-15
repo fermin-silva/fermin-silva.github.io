@@ -3,14 +3,16 @@
 <!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
 <!--[if IE 8]><html class="preIE9"><![endif]-->
 <!--[if gte IE 9]><!--><html><!--<![endif]-->
-  <head>
+<head>
     <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>title</title>
+  <title>Beautiful full screen tab slideshow</title>
   <meta name="author" content="name">
-  <meta name="description" content="description here">
-  <meta name="keywords" content="keywords,here">
+  <meta name="description" content="Beautiful high resolution photo slideshow. Ideal for TVs in bars, kiosks or just to relax.">
+  <meta name="keywords" content="hd,high resolution,pictures,unsplash,gallery,slideshow">
+
+  <link data-react-helmet="true" rel="shortcut icon" type="image/x-icon" href="https://unsplash.global.ssl.fastly.net/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
 
   <style type="text/css">
@@ -39,10 +41,6 @@
     height: 100%;
     background-position: center;
     background-size: cover;
-    -webkit-transition: opacity 2s ease-in-out;
-       -moz-transition: opacity 2s ease-in-out;
-         -o-transition: opacity 2s ease-in-out;
-            transition: opacity 2s ease-in-out;
 }
 
 .credits {
@@ -135,12 +133,21 @@ a.like_photo {
 <script type="text/javascript">
 
 var cache = [];
+var url = "https://api.unsplash.com/photos/random?" +
+          "collections=458624,162468" +
+          "&orientation=landscape" +
+          "&client_id=a819ed546b5826ca71ac2c81d67bf0f287a3b1f344ce2fabd69b54ce53cc4af2" +
+          "&count=30" +
+          "&w=1920" +
+          "&h=1080";
+
+var sleepTime = 2000;
 
 function getNext(callback) {
     if (cache.length > 0) {
         callback( cache.shift() );
     } else {
-        $.getJSON( "https://api.unsplash.com/photos/random?collections=140375,139015,210849,346491,334800&w=1920&h=1080&orientation=landscape&client_id=a819ed546b5826ca71ac2c81d67bf0f287a3b1f344ce2fabd69b54ce53cc4af2&count=30", function( data ) {
+        $.getJSON( url, function( data ) {
             for (var i = 0; i < data.length; i++) {
                 cache.push( data[i] );
             }
@@ -151,9 +158,11 @@ function getNext(callback) {
 }
 
 function swap(current, next) {
+    sleepTime += 2000; if (sleepTime > 40000) sleepTime = 40000;
+
     getNext(function( data ) {
         $(next + " .likes_count").text( data.likes );
-        $(next + " .like_photo").attr("href", data.links.html );
+        $(next + " a.like_photo").attr("href", data.links.html );
         $(next + " .photo_by").text( data.user.name );
         $(next + " .photo_by").attr("href", data.user.links.html );
 
@@ -174,19 +183,21 @@ function swap(current, next) {
             $(next).css("background-image", "url('" + imgSrc + "')");
 
             if (current === "#div1") {
-                $(current).css('opacity', '0');
+                $(current).fadeOut(2000, function() {
+                    setTimeout(function() {
+                        swap(next, current) //args inverted
+                    }, sleepTime);
+                });
             } else {
-                $(next).css('opacity', '1');
+                $(next).fadeIn(2000, function() {
+                    setTimeout(function() {
+                        swap(next, current) //args inverted
+                    }, sleepTime);
+                });
             }
-
-
         }).each(function() {
             if(this.complete) $(this).load();
-        });
-
-        setTimeout(function() {
-            swap(next, current) //args inverted
-        }, 15000);
+        }); //end image on load
 
     }); //end getNext
 } //end swap
@@ -195,7 +206,7 @@ $(document).ready(function () {
     setTimeout(function() {
         $('#div2').toggle();
         swap('#div1', '#div2')
-    }, 5000);
+    }, sleepTime);
 
     var idleMouseTimer;
     var forceMouseHide = false;
