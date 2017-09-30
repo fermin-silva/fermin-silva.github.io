@@ -1,0 +1,41 @@
+ul.experience {
+    padding-left: 0px;
+    list-style: none;
+
+    .date {
+        display: inline;
+        font-size: 1.25em;
+    }
+
+    a.company {
+        color: $gray-lighter;
+        font-size: 1.25em;
+        margin-left: 10px;
+        float: right;
+    }
+
+    p {
+        margin-top: 5px;
+        text-align: justify;
+    }
+}
+
+#about {
+    .progress {
+        margin-top: 6px;
+    }
+
+    .skill {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    h4 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .position {
+        font-weight: bold;
+    }
+}
