@@ -1,4 +1,8 @@
-/* === Variables === */
+/* ══════════════════════════════════════
+   rutina.css — beige theme for GymLog
+   Loaded after base.css
+   ══════════════════════════════════════ */
+
 :root {
   --beige-100: #faf6f0;
   --beige-200: #f2ead9;
@@ -8,100 +12,34 @@
   --ink: #2a1f14;
   --ink-light: #6b5544;
   --accent: #8b4513;
+  --navbar-bg: var(--beige-300);
+  --border: var(--beige-500);
   --success: #5a7a5a;
+  --max-width: 640px;
   --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
-}
-
-/* === Reset === */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--font-body);
   background: var(--beige-100);
   color: var(--ink);
-  line-height: 1.5;
-  min-height: 100dvh;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  background: none;
-}
-
-/* === Navbar === */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--beige-300);
-  border-bottom: 1px solid var(--beige-500);
-}
-
-.navbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  height: 52px;
-}
+/* ── Navbar: sticky bar + hamburger dropdown ── */
 
 .navbar-brand {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
-  font-weight: 700;
   color: var(--accent);
 }
 
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 8px;
-  z-index: 110;
-}
-
 .hamburger-line {
-  display: block;
-  width: 22px;
-  height: 2px;
   background: var(--ink);
-  border-radius: 1px;
-  transition: transform 0.2s, opacity 0.2s;
 }
 
-.hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
-  opacity: 0;
-}
-.hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
+/* Dropdown nav — hidden by default, shown on toggle */
 .nav-links {
-  list-style: none;
   display: none;
-  background: var(--beige-300);
-  border-bottom: 1px solid var(--beige-500);
+  background: var(--navbar-bg);
+  border-bottom: 1px solid var(--border);
   padding: 0.5rem 0;
 }
 
@@ -110,12 +48,11 @@ button {
 }
 
 .nav-link {
-  display: block;
   padding: 0.75rem 1.5rem;
-  font-size: 0.95rem;
-  font-weight: 500;
   color: var(--ink-light);
-  transition: color 0.15s, background 0.15s;
+  text-transform: none;
+  font-size: 0.95rem;
+  letter-spacing: 0;
 }
 
 .nav-link:hover {
@@ -129,8 +66,8 @@ button {
 }
 
 .nav-separator {
+  display: block;
   border-top: 1px solid var(--beige-500);
-  margin: 0.25rem 1rem;
 }
 
 .lang-switch {
@@ -140,71 +77,28 @@ button {
   font-weight: 600;
   letter-spacing: 0.06em;
   color: var(--brown-700);
+  text-transform: uppercase;
 }
 
-/* === Main Content === */
-.main-content {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem 6rem;
-}
+/* ── Hero — beige colors ── */
+.hero-title { color: var(--accent); }
+.hero-subtitle { color: var(--ink-light); }
+.page-header p { color: var(--ink-light); }
 
-/* === Landing === */
-.landing {
-  text-align: center;
-  padding-top: 2rem;
-}
-
-.landing-title {
-  font-family: var(--font-heading);
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 0.25rem;
-}
-
-.landing-subtitle {
-  color: var(--ink-light);
-  font-size: 1.05rem;
-  margin-bottom: 2.5rem;
-}
-
-.routine-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.routine-card {
-  display: block;
+/* ── Content item — beige card colors ── */
+.content-item {
   background: var(--beige-200);
-  border: 1px solid var(--beige-300);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: left;
-  transition: transform 0.15s, box-shadow 0.15s;
+  border-color: var(--beige-300);
 }
 
-.routine-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(42, 31, 20, 0.08);
+.content-item-title {
+  color: var(--ink);
 }
 
-.routine-card-title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
+.content-item-meta { color: var(--ink-light); }
+.content-item-desc { color: var(--ink-light); }
 
-.routine-card-type {
-  color: var(--ink-light);
-  font-size: 0.875rem;
-}
-
-/* === Routine Page === */
+/* ── Routine page ── */
 .routine-title {
   font-family: var(--font-heading);
   font-size: 1.75rem;
@@ -212,7 +106,7 @@ button {
   margin-bottom: 0.5rem;
 }
 
-/* === Week Bar === */
+/* ── Week bar ── */
 .week-bar {
   display: flex;
   align-items: center;
@@ -255,7 +149,7 @@ button {
   cursor: default;
 }
 
-/* === Exercise Sections === */
+/* ── Exercise sections ── */
 .exercise-section {
   margin-bottom: 1.5rem;
 }
@@ -279,17 +173,19 @@ button {
   user-select: none;
 }
 
-/* Non-collapsible sections (flat type) */
 div.exercise-section > .section-header {
   cursor: default;
 }
 
 .section-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   color: var(--brown-700);
+  border-bottom: 1px solid var(--beige-300);
+}
+
+.section-header .section-label {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .progress-counter {
@@ -298,7 +194,7 @@ div.exercise-section > .section-header {
   font-variant-numeric: tabular-nums;
 }
 
-/* === Exercise Items === */
+/* ── Exercise items ── */
 .exercise-list {
   display: flex;
   flex-direction: column;
@@ -323,7 +219,6 @@ div.exercise-section > .section-header {
   background: var(--beige-200);
 }
 
-/* Hide native checkbox */
 .exercise-item input[type="checkbox"] {
   position: absolute;
   opacity: 0;
@@ -331,7 +226,6 @@ div.exercise-section > .section-header {
   height: 0;
 }
 
-/* Custom checkbox */
 .custom-checkbox {
   flex-shrink: 0;
   width: 22px;
@@ -380,7 +274,6 @@ div.exercise-section > .section-header {
   transition: opacity 0.15s;
 }
 
-/* Checked state */
 .exercise-item.checked .exercise-name {
   text-decoration: line-through;
   color: var(--ink-light);
@@ -390,7 +283,7 @@ div.exercise-section > .section-header {
   opacity: 1;
 }
 
-/* === Install Button === */
+/* ── Install button ── */
 .install-btn {
   position: fixed;
   bottom: 1.25rem;
@@ -400,7 +293,7 @@ div.exercise-section > .section-header {
   gap: 0.5rem;
   background: var(--brown-700);
   color: var(--beige-100);
-  font-family: var(--font-body);
+  font-family: inherit;
   font-size: 0.85rem;
   font-weight: 600;
   padding: 0.7rem 1.1rem;

@@ -4,20 +4,20 @@ title: Home
 ---
 
 <div class="hero">
-  <h1>Hi, I'm Fermin Silva</h1>
-  <p>Software engineer. Building things for the web.</p>
+  <h1 class="hero-title">Hi, I'm Fermin Silva</h1>
+  <p class="hero-subtitle">Software engineer. Building things for the web.</p>
 </div>
 
 <div class="section">
-  <h2>What I Do</h2>
-  <div class="card-grid">
-    <a href="{{ '/projects' | relative_url }}" class="card">
-      <h3>Projects</h3>
-      <p>Side projects and things I've built.</p>
+  <h2 class="section-label">What I Do</h2>
+  <div class="content-list">
+    <a href="{{ '/projects' | relative_url }}" class="content-item">
+      <div class="content-item-title">Projects</div>
+      <div class="content-item-desc">Side projects and things I've built.</div>
     </a>
-    <a href="{{ '/rutina/' | relative_url }}" class="card">
-      <h3>Rutina</h3>
-      <p>A PWA gym routine tracker.</p>
+    <a href="{{ '/rutina/' | relative_url }}" class="content-item">
+      <div class="content-item-title">Rutina</div>
+      <div class="content-item-desc">A PWA gym routine tracker.</div>
     </a>
   </div>
 </div>

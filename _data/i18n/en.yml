@@ -1,6 +1,7 @@
 brand: GymLog
 landing_subtitle: "Track your gym routines, week by week."
 install_button: "Add to Home Screen"
+section_routines: Routines
 section_exercises: Exercises
 card_exercises: exercises
 card_days: days
