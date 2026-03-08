@@ -2,6 +2,9 @@
 name:
   en: Full Body Blast
   es: Cuerpo Completo Intenso
+desc:
+  en: All major muscle groups in one session. Compound lifts, maximum efficiency.
+  es: Todos los grupos musculares en una sesión. Levantamientos compuestos, máxima eficiencia.
 slug: fullbody
 type: flat
 exercises:

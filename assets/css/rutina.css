@@ -101,21 +101,32 @@ body {
 /* ── Routine page ── */
 .routine-title {
   font-family: var(--font-heading);
-  font-size: 1.75rem;
+  font-size: 1.55rem;
   font-weight: 700;
-  padding-left: 1.25rem;
-  margin-bottom: 0.5rem;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
 }
 
-/* ── Week bar ── */
+.routine-subtitle {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Week bar (sub-navbar, mirrors .navbar pattern) ── */
 .week-bar {
+  background: var(--beige-200);
+  border-bottom: 1px solid var(--beige-300);
+}
+
+.week-bar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--beige-200);
-  border-bottom: 1px solid var(--beige-300);
-  margin: -1.5rem -1rem 1.5rem;
-  padding: 0.65rem 0.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 44px;
 }
 
 .week-label {
@@ -181,6 +192,7 @@ div.exercise-section > .section-header {
 .section-label {
   color: var(--brown-700);
   border-bottom: 1px solid var(--beige-300);
+  padding-left: 0;
 }
 
 .section-header .section-label {

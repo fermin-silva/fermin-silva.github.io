@@ -6,13 +6,18 @@ layout: rutina-default
      data-name-en="{{ page.name.en | default: page.name }}"
      data-name-es="{{ page.name.es | default: page.name }}">
 
-  {% include rutina-week-bar.html %}
-
   <h1 class="routine-title"
       data-i18n-en="{{ page.name.en | default: page.name }}"
       data-i18n-es="{{ page.name.es | default: page.name }}">
     {{ page.name.en | default: page.name }}
   </h1>
+  {% if page.desc %}
+  <p class="routine-subtitle"
+     data-i18n-en="{{ page.desc.en | default: page.desc }}"
+     data-i18n-es="{{ page.desc.es | default: page.desc }}">
+    {{ page.desc.en | default: page.desc }}
+  </p>
+  {% endif %}
 
   {% if page.type == "flat" %}
     <div class="exercise-section" data-section="all">
