@@ -35,6 +35,10 @@ body {
   background: var(--ink);
 }
 
+.hamburger {
+  margin-right: -8px;
+}
+
 /* Dropdown nav — hidden by default, shown on toggle */
 .nav-links {
   display: none;
@@ -102,7 +106,16 @@ body {
 .routine-title {
   font-family: var(--font-heading);
   font-size: 1.55rem;
+  font-size: 1.55rem;
   font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.routine-subtitle {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  margin-bottom: 1.5rem;
   color: var(--accent);
   margin-bottom: 0.25rem;
 }
@@ -114,7 +127,13 @@ body {
 }
 
 /* ── Week bar (sub-navbar, mirrors .navbar pattern) ── */
+/* ── Week bar (sub-navbar, mirrors .navbar pattern) ── */
 .week-bar {
+  background: var(--beige-200);
+  border-bottom: 1px solid var(--beige-300);
+}
+
+.week-bar-inner {
   background: var(--beige-200);
   border-bottom: 1px solid var(--beige-300);
 }
@@ -129,13 +148,17 @@ body {
   height: 44px;
 }
 
+.week-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
 .week-label {
   font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--ink);
-  text-align: center;
-  flex: 1;
 }
 
 .week-arrow {
@@ -149,6 +172,14 @@ body {
   border-radius: 8px;
   flex-shrink: 0;
   transition: background 0.15s, color 0.15s;
+}
+
+.week-prev {
+  justify-content: left;
+}
+
+.week-next {
+  justify-content: right;
 }
 
 .week-arrow:hover:not(:disabled) {
@@ -192,6 +223,7 @@ div.exercise-section > .section-header {
 .section-label {
   color: var(--brown-700);
   border-bottom: 1px solid var(--beige-300);
+  padding-left: 0;
   padding-left: 0;
 }
 
