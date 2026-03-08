@@ -7,16 +7,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   {% seo %}
 </head>
 <body>
   {% include site-header.html %}
-  <main class="site-main">
+  <main class="main-content">
     {{ content }}
   </main>
   <footer class="site-footer">
-    <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title }}</p>
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title }} &middot; Built {{ 'now' | date: '%b %Y' }}</p>
   </footer>
 </body>
 </html>

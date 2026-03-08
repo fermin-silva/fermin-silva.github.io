@@ -2,28 +2,31 @@
 layout: rutina-default
 ---
 
-<div class="landing">
-  <h1 class="landing-title" data-i18n="brand">GymLog</h1>
-  <p class="landing-subtitle" data-i18n="landing_subtitle">Track your gym routines, week by week.</p>
+<div class="hero">
+  <h1 class="hero-title" data-i18n="brand">GymLog</h1>
+  <p class="hero-subtitle" data-i18n="landing_subtitle">Track your gym routines, week by week.</p>
+</div>
 
-  <div class="routine-cards">
-    {% for routine in site.routines %}
-      <a href="{{ routine.url | relative_url }}" class="routine-card">
-        <h2 class="routine-card-title"
-            data-i18n-en="{{ routine.name.en | default: routine.name }}"
-            data-i18n-es="{{ routine.name.es | default: routine.name }}">
-          {{ routine.name.en | default: routine.name }}
-        </h2>
-        <p class="routine-card-type">
-          {% if routine.type == "flat" %}
-            <span data-i18n-count="{{ routine.exercises | size }}" data-i18n-unit="card_exercises">{{ routine.exercises | size }} exercises</span>
-          {% elsif routine.type == "by_day" %}
-            <span data-i18n-count="{{ routine.days | size }}" data-i18n-unit="card_days">{{ routine.days | size }} days</span>
-          {% elsif routine.type == "by_group" %}
-            <span data-i18n-count="{{ routine.groups | size }}" data-i18n-unit="card_groups">{{ routine.groups | size }} groups</span>
-          {% endif %}
-        </p>
-      </a>
-    {% endfor %}
+<div class="section">
+  <h2 class="section-label" data-i18n="section_routines">Routines</h2>
+  <div class="content-list">
+  {% for routine in site.routines %}
+    <a href="{{ routine.url | relative_url }}" class="content-item">
+      <div class="content-item-title"
+          data-i18n-en="{{ routine.name.en | default: routine.name }}"
+          data-i18n-es="{{ routine.name.es | default: routine.name }}">
+        {{ routine.name.en | default: routine.name }}
+      </div>
+      <div class="content-item-desc">
+        {% if routine.type == "flat" %}
+          <span data-i18n-count="{{ routine.exercises | size }}" data-i18n-unit="card_exercises">{{ routine.exercises | size }} exercises</span>
+        {% elsif routine.type == "by_day" %}
+          <span data-i18n-count="{{ routine.days | size }}" data-i18n-unit="card_days">{{ routine.days | size }} days</span>
+        {% elsif routine.type == "by_group" %}
+          <span data-i18n-count="{{ routine.groups | size }}" data-i18n-unit="card_groups">{{ routine.groups | size }} groups</span>
+        {% endif %}
+      </div>
+    </a>
+  {% endfor %}
   </div>
 </div>

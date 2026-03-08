@@ -1,6 +1,5 @@
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="{{ '/' | relative_url }}" class="navbar-back">&larr; Home</a>
     <a href="{{ '/rutina/' | relative_url }}" class="navbar-brand">GymLog</a>
     <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span class="hamburger-line"></span>
@@ -22,6 +21,10 @@
     <li class="nav-separator"></li>
     <li>
       <button class="nav-link lang-switch" data-i18n="lang_label">ES</button>
+    </li>
+    <li class="nav-separator"></li>
+    <li>
+      <a href="{{ '/' | relative_url }}" class="nav-link">&larr; Home</a>
     </li>
   </ul>
 </nav>

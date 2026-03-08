@@ -1,11 +1,11 @@
-<header class="site-header">
-  <nav class="site-nav">
-    <a href="{{ '/' | relative_url }}" class="site-brand">{{ site.title }}</a>
-    <ul class="site-nav-links">
-      <li><a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Home</a></li>
-      <li><a href="{{ '/projects' | relative_url }}" class="{% if page.url == '/projects.html' %}active{% endif %}">Projects</a></li>
-      <li><a href="{{ '/cv' | relative_url }}" class="{% if page.url == '/cv.html' %}active{% endif %}">CV</a></li>
-      <li><a href="{{ '/rutina/' | relative_url }}" class="{% if page.url contains '/rutina' %}active{% endif %}">Rutina</a></li>
-    </ul>
-  </nav>
-</header>
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="{{ '/' | relative_url }}" class="navbar-brand">{{ site.title }}</a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Home</a></li>
+    <li><a href="{{ '/projects' | relative_url }}" class="nav-link {% if page.url == '/projects.html' %}active{% endif %}">Projects</a></li>
+    <li><a href="{{ '/cv' | relative_url }}" class="nav-link {% if page.url == '/cv.html' %}active{% endif %}">CV</a></li>
+    <li><a href="{{ '/rutina/' | relative_url }}" class="nav-link {% if page.url contains '/rutina' %}active{% endif %}">Rutina</a></li>
+  </ul>
+</nav>

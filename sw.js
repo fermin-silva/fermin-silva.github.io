@@ -4,6 +4,7 @@ const PRECACHE_URLS = [
   '/rutina/',
   '/rutina/routines/ppl/',
   '/rutina/routines/fullbody/',
+  '/assets/css/base.css',
   '/assets/css/rutina.css',
   '/assets/js/rutina-app.js',
   '/manifest.json',

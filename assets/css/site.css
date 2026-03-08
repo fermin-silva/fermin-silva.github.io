@@ -1,5 +1,7 @@
-/* ── Reset & Base ── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+/* ══════════════════════════════════════
+   site.css — dark theme for personal site
+   Loaded after base.css
+   ══════════════════════════════════════ */
 
 :root {
   --bg: #0f1117;
@@ -9,124 +11,90 @@
   --accent: #6366f1;
   --accent-hover: #818cf8;
   --border: #2d2e3a;
-  --max-width: 720px;
+  --navbar-bg: #0f1117;
+  --max-width: 640px;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-a { color: var(--accent); text-decoration: none; }
+a { color: var(--accent); }
 a:hover { color: var(--accent-hover); }
 
-/* ── Header ── */
-.site-header {
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 1.5rem;
+/* ── Navbar: always-visible tab bar, no hamburger ── */
+
+.navbar-inner {
+  justify-content: center;
 }
 
-.site-nav {
+.navbar-brand {
+  font-size: 1.5rem;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.hamburger { display: none; }
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
   max-width: var(--max-width);
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
+  padding: 0 1rem;
 }
 
-.site-brand {
-  font-weight: 700;
-  font-size: 1.125rem;
-  color: var(--text);
+.nav-links li {
+  flex: 1;
+  text-align: center;
 }
 
-.site-nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.25rem;
-}
-
-.site-nav-links a {
+.nav-link {
+  padding: 0.5rem 0;
   color: var(--text-muted);
-  font-size: 0.875rem;
-  font-weight: 500;
-  padding: 0.25rem 0;
   border-bottom: 2px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
 }
 
-.site-nav-links a:hover,
-.site-nav-links a.active {
+.nav-link:hover { color: var(--text); }
+
+.nav-link.active {
   color: var(--text);
+  font-weight: 600;
   border-bottom-color: var(--accent);
 }
 
-/* ── Main ── */
-.site-main {
-  flex: 1;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 3rem 1.5rem;
-  width: 100%;
-}
+.nav-separator { display: none; }
 
-/* ── Hero ── */
-.hero { margin-bottom: 3rem; }
-.hero h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 0.75rem; }
-.hero p { font-size: 1.125rem; color: var(--text-muted); max-width: 540px; }
+/* ── Hero / page header — dark colors ── */
+.hero-subtitle { color: var(--text-muted); }
+.page-header p { color: var(--text-muted); }
 
-/* ── Section ── */
-.section { margin-bottom: 3rem; }
-.section h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.5rem;
+.section-label {
+  color: var(--text-muted);
   border-bottom: 1px solid var(--border);
 }
 
-/* ── Cards ── */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
-}
-
-.card {
+/* ── Content item — dark card colors ── */
+.content-item {
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
-  padding: 1.25rem;
-  transition: border-color 0.2s;
+  border-color: var(--border);
 }
 
-.card:hover { border-color: var(--accent); }
-.card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
-.card p { font-size: 0.875rem; color: var(--text-muted); }
-
-/* ── CV entries ── */
-.cv-entry { margin-bottom: 1.5rem; }
-.cv-entry h3 { font-size: 1rem; font-weight: 600; }
-.cv-entry .cv-meta { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.25rem; }
-.cv-entry p { font-size: 0.9rem; }
+.content-item-title { color: var(--text); }
+.content-item-meta { color: var(--text-muted); }
+.content-item-desc { color: var(--text-muted); }
 
 /* ── Footer ── */
 .site-footer {
-  border-top: 1px solid var(--border);
-  padding: 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  padding: 2rem 1rem;
   text-align: center;
   color: var(--text-muted);
-  font-size: 0.8rem;
-}
-
-/* ── Responsive ── */
-@media (max-width: 600px) {
-  .site-nav { flex-direction: column; gap: 0.75rem; }
-  .hero h1 { font-size: 1.75rem; }
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
 }
