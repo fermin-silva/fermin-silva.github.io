@@ -69,6 +69,10 @@ a:hover { color: var(--accent-hover); }
 .nav-separator { display: none; }
 
 /* ── Hero / page header — dark colors ── */
+.hero {
+  padding-top: 0.5rem;
+}
+
 .hero-subtitle { color: var(--text-muted); }
 .page-header p { color: var(--text-muted); }
 
