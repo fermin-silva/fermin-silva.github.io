@@ -1,0 +1,425 @@
+/* === Variables === */
+:root {
+  --beige-100: #faf6f0;
+  --beige-200: #f2ead9;
+  --beige-300: #e8dcc8;
+  --beige-500: #c8b89a;
+  --brown-700: #7a5c3a;
+  --ink: #2a1f14;
+  --ink-light: #6b5544;
+  --accent: #8b4513;
+  --success: #5a7a5a;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+/* === Reset === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--beige-100);
+  color: var(--ink);
+  line-height: 1.5;
+  min-height: 100dvh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* === Navbar === */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--beige-300);
+  border-bottom: 1px solid var(--beige-500);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 52px;
+}
+
+.navbar-brand {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  z-index: 110;
+}
+
+.hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 1px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-links {
+  list-style: none;
+  display: none;
+  background: var(--beige-300);
+  border-bottom: 1px solid var(--beige-500);
+  padding: 0.5rem 0;
+}
+
+.nav-links.open {
+  display: block;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink-light);
+  transition: color 0.15s, background 0.15s;
+}
+
+.nav-link:hover {
+  background: var(--beige-200);
+  color: var(--ink);
+}
+
+.nav-link.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.nav-separator {
+  border-top: 1px solid var(--beige-500);
+  margin: 0.25rem 1rem;
+}
+
+.lang-switch {
+  width: 100%;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--brown-700);
+}
+
+/* === Main Content === */
+.main-content {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 6rem;
+}
+
+/* === Landing === */
+.landing {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.landing-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.landing-subtitle {
+  color: var(--ink-light);
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
+}
+
+.routine-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.routine-card {
+  display: block;
+  background: var(--beige-200);
+  border: 1px solid var(--beige-300);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.routine-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(42, 31, 20, 0.08);
+}
+
+.routine-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.routine-card-type {
+  color: var(--ink-light);
+  font-size: 0.875rem;
+}
+
+/* === Routine Page === */
+.routine-title {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* === Week Bar === */
+.week-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--beige-200);
+  border-bottom: 1px solid var(--beige-300);
+  margin: -1.5rem -1rem 1.5rem;
+  padding: 0.65rem 0.5rem;
+}
+
+.week-label {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: center;
+  flex: 1;
+}
+
+.week-arrow {
+  font-size: 1.3rem;
+  color: var(--ink-light);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.week-arrow:hover:not(:disabled) {
+  background: var(--beige-300);
+  color: var(--ink);
+}
+
+.week-arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* === Exercise Sections === */
+.exercise-section {
+  margin-bottom: 1.5rem;
+}
+
+.exercise-section summary {
+  list-style: none;
+}
+
+.exercise-section summary::-webkit-details-marker {
+  display: none;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 2px solid var(--beige-300);
+  margin-bottom: 0.25rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Non-collapsible sections (flat type) */
+div.exercise-section > .section-header {
+  cursor: default;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brown-700);
+}
+
+.progress-counter {
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Exercise Items === */
+.exercise-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 0.25rem;
+  border-bottom: 1px solid var(--beige-200);
+  cursor: pointer;
+  transition: background 0.12s;
+  user-select: none;
+}
+
+.exercise-item:last-child {
+  border-bottom: none;
+}
+
+.exercise-item:active {
+  background: var(--beige-200);
+}
+
+/* Hide native checkbox */
+.exercise-item input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom checkbox */
+.custom-checkbox {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--beige-500);
+  border-radius: 4px;
+  transition: background 0.15s, border-color 0.15s;
+  position: relative;
+}
+
+.exercise-item input:checked ~ .custom-checkbox {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.custom-checkbox::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.exercise-item input:checked ~ .custom-checkbox::after {
+  opacity: 1;
+}
+
+.exercise-name {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  transition: color 0.15s;
+}
+
+.check-icon {
+  font-size: 1rem;
+  color: var(--success);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+/* Checked state */
+.exercise-item.checked .exercise-name {
+  text-decoration: line-through;
+  color: var(--ink-light);
+}
+
+.exercise-item.checked .check-icon {
+  opacity: 1;
+}
+
+/* === Install Button === */
+.install-btn {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--brown-700);
+  color: var(--beige-100);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.7rem 1.1rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px rgba(42, 31, 20, 0.2);
+  transition: transform 0.15s, box-shadow 0.15s;
+  z-index: 90;
+}
+
+.install-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(42, 31, 20, 0.25);
+}
+
+.install-btn.visible {
+  display: flex;
+}
+
+.install-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}

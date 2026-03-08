@@ -1,0 +1,21 @@
+brand: GymLog
+landing_subtitle: "Registra tus rutinas de gym, semana a semana."
+install_button: "Agregar a pantalla de inicio"
+section_exercises: Ejercicios
+card_exercises: ejercicios
+card_days: "días"
+card_groups: grupos
+lang_label: EN
+months:
+  - Ene
+  - Feb
+  - Mar
+  - Abr
+  - May
+  - Jun
+  - Jul
+  - Ago
+  - Sep
+  - Oct
+  - Nov
+  - Dic

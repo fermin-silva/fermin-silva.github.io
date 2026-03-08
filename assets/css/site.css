@@ -1,0 +1,132 @@
+/* ── Reset & Base ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0f1117;
+  --bg-card: #1a1b23;
+  --text: #e4e4e7;
+  --text-muted: #9ca3af;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --border: #2d2e3a;
+  --max-width: 720px;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); }
+
+/* ── Header ── */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+}
+
+.site-nav {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.site-brand {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--text);
+}
+
+.site-nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.site-nav-links a {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.site-nav-links a:hover,
+.site-nav-links a.active {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* ── Main ── */
+.site-main {
+  flex: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  width: 100%;
+}
+
+/* ── Hero ── */
+.hero { margin-bottom: 3rem; }
+.hero h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 0.75rem; }
+.hero p { font-size: 1.125rem; color: var(--text-muted); max-width: 540px; }
+
+/* ── Section ── */
+.section { margin-bottom: 3rem; }
+.section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Cards ── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  transition: border-color 0.2s;
+}
+
+.card:hover { border-color: var(--accent); }
+.card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+.card p { font-size: 0.875rem; color: var(--text-muted); }
+
+/* ── CV entries ── */
+.cv-entry { margin-bottom: 1.5rem; }
+.cv-entry h3 { font-size: 1rem; font-weight: 600; }
+.cv-entry .cv-meta { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+.cv-entry p { font-size: 0.9rem; }
+
+/* ── Footer ── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .site-nav { flex-direction: column; gap: 0.75rem; }
+  .hero h1 { font-size: 1.75rem; }
+}
