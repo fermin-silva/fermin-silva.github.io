@@ -1,32 +1,46 @@
 ---
 layout: site-default
 title: CV
+page_title: CV
+page_subtitle: Experience and education.
+experience:
+  - title: Software Engineer
+    meta: "Company Name · 2020 – Present"
+    desc: Description of role and accomplishments.
+education:
+  - title: Degree
+    meta: "University · Year"
+    desc: Details.
 ---
 
 <div class="page-header">
-  <h1>CV</h1>
-  <p>Experience and education.</p>
+  <h1>{{ page.page_title }}</h1>
+  <p>{{ page.page_subtitle }}</p>
 </div>
 
 <div class="section">
   <h2 class="section-label">Experience</h2>
   <div class="content-list">
+    {% for item in page.experience %}
     <div class="content-item">
-      <div class="content-item-title">Software Engineer</div>
-      <div class="content-item-meta">Company Name &middot; 2020 &ndash; Present</div>
-      <div class="content-item-desc">Description of role and accomplishments.</div>
+      <div class="content-item-title">{{ item.title }}</div>
+      <div class="content-item-meta">{{ item.meta }}</div>
+      <div class="content-item-desc">{{ item.desc }}</div>
     </div>
-    <!-- Add more content-items here -->
+    {% endfor %}
+    <!-- Add more items in front matter above -->
   </div>
 </div>
 
 <div class="section">
   <h2 class="section-label">Education</h2>
   <div class="content-list">
+    {% for item in page.education %}
     <div class="content-item">
-      <div class="content-item-title">Degree</div>
-      <div class="content-item-meta">University &middot; Year</div>
-      <div class="content-item-desc">Details.</div>
+      <div class="content-item-title">{{ item.title }}</div>
+      <div class="content-item-meta">{{ item.meta }}</div>
+      <div class="content-item-desc">{{ item.desc }}</div>
     </div>
+    {% endfor %}
   </div>
 </div>

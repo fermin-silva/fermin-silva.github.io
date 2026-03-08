@@ -3,8 +3,16 @@ layout: rutina-default
 ---
 
 <div class="hero">
-  <h1 class="hero-title" data-i18n="brand">GymLog</h1>
-  <p class="hero-subtitle" data-i18n="landing_subtitle">Track your gym routines, week by week.</p>
+  <h1 class="hero-title"
+      data-i18n-en="{{ site.data.i18n.en.rutina_title }}"
+      data-i18n-es="{{ site.data.i18n.es.rutina_title }}">
+    {{ site.data.i18n.en.rutina_title }}
+  </h1>
+  <p class="hero-subtitle"
+     data-i18n-en="{{ site.data.i18n.en.rutina_subtitle }}"
+     data-i18n-es="{{ site.data.i18n.es.rutina_subtitle }}">
+    {{ site.data.i18n.en.rutina_subtitle }}
+  </p>
 </div>
 
 <div class="section">
