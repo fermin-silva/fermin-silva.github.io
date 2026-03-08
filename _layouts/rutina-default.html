@@ -18,6 +18,9 @@
 </head>
 <body>
   {% include rutina-navbar.html %}
+  {% if page.layout == 'rutina-routine' %}
+    {% include rutina-week-bar.html %}
+  {% endif %}
   <main class="main-content">
     {{ content }}
   </main>
