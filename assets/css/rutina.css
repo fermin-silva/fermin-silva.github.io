@@ -13,6 +13,7 @@
   --ink-light: #6b5544;
   --accent: #8b4513;
   --navbar-bg: var(--beige-300);
+  --bg-root: var(--beige-100);
   --border: var(--beige-500);
   --success: #5a7a5a;
   --max-width: 640px;
@@ -25,6 +26,15 @@ body {
 }
 
 /* ── Navbar: sticky bar + hamburger dropdown ── */
+
+/* Translucent blur navbar — only in standalone (installed app) */
+.standalone .navbar {
+  background: rgba(232, 220, 200, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: none;
+}
+
 
 .navbar-brand {
   font-family: var(--font-heading);
@@ -326,6 +336,26 @@ div.exercise-section > .section-header {
 
 .exercise-item.checked .check-icon {
   opacity: 1;
+}
+
+/* ── iOS install tooltip (appears above the install button) ── */
+.ios-install-tip {
+  position: fixed;
+  bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  right: 1.25rem;
+  background: var(--ink);
+  color: var(--beige-100);
+  font-size: 0.85rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(42, 31, 20, 0.25);
+  z-index: 200;
+  max-width: 220px;
+  line-height: 1.4;
+}
+
+.ios-install-tip strong {
+  color: var(--beige-300);
 }
 
 /* ── Install button ── */

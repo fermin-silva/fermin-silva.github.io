@@ -252,6 +252,29 @@
     deferredPrompt = null;
   });
 
+  // ── iOS Safari: show install button that triggers a share-sheet tooltip ──
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  var isInStandalone = window.navigator.standalone === true;
+
+  if (isIOS && !isInStandalone) {
+    installBtn.classList.add('visible');
+    installBtn.addEventListener('click', function () {
+      // Open native share sheet (requires HTTPS — works on production)
+      if (navigator.share) {
+        navigator.share({ title: document.title, url: window.location.href }).catch(function () {});
+      }
+      // Always show tooltip
+      var tip = document.querySelector('.ios-install-tip');
+      if (!tip) {
+        tip = document.createElement('div');
+        tip.className = 'ios-install-tip';
+        tip.innerHTML = t('ios_install_hint');
+        document.body.appendChild(tip);
+        setTimeout(function () { if (tip) tip.remove(); }, 5000);
+      }
+    });
+  }
+
   // ── Service Worker Registration ──
 
   if ('serviceWorker' in navigator) {

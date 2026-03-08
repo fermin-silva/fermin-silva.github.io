@@ -1,6 +1,8 @@
 brand: GymLog
-landing_subtitle: "Track your gym routines, week by week."
+rutina_title: GymLog test
+rutina_subtitle: "Track your gym routines, week by week."
 install_button: "Add to Home Screen"
+ios_install_hint: "Tap <strong>Share ⬆</strong> → <strong>More···</strong> → <strong>Add to Home Screen</strong>"
 section_routines: Routines
 section_exercises: Exercises
 card_exercises: exercises

@@ -1,6 +1,8 @@
 brand: GymLog
-landing_subtitle: "Registra tus rutinas de gym, semana a semana."
+rutina_title: GymLog test
+rutina_subtitle: "Registra tus rutinas de gym, semana a semana."
 install_button: "Agregar a pantalla de inicio"
+ios_install_hint: "Toca <strong>Compartir ⬆</strong> → <strong>Más···</strong> → <strong>Agregar a pantalla de inicio</strong>"
 section_routines: Rutinas
 section_exercises: Ejercicios
 card_exercises: ejercicios
