@@ -28,44 +28,16 @@
 
   var currentLocale = getLocale();
 
-  // Keys use dot notation (e.g. "install.button") to match the nested YAML structure.
-  // JS bracket notation obj['install.button'] treats the dot as a literal character,
-  // so we must split and traverse the object manually.
-  function t(key) {
-    function resolve(obj, key) {
-      var parts = key.split('.');
-      for (var i = 0; i < parts.length; i++) {
-        if (obj == null || typeof obj !== 'object') return undefined;
-        obj = obj[parts[i]];
-      }
-      return (obj != null && typeof obj !== 'object') ? String(obj) : undefined;
-    }
-    var lang = i18nData[currentLocale] || {};
-    return resolve(lang, key) || resolve(i18nData[FALLBACK] || {}, key) || key;
-  }
-
   function applyLocale() {
     document.documentElement.lang = currentLocale;
 
-    // data-i18n="key" → lookup from i18nData
-    var els = document.querySelectorAll('[data-i18n]');
+    // data-i18n-en / data-i18n-es → both translations baked into attributes by Jekyll.
+    // innerHTML used so translations can contain markup (e.g. <strong>).
+    var els = document.querySelectorAll('[data-i18n-en]');
     for (var i = 0; i < els.length; i++) {
-      els[i].textContent = t(els[i].getAttribute('data-i18n'));
-    }
-
-    // data-i18n-en / data-i18n-es → use direct attribute
-    var inlineEls = document.querySelectorAll('[data-i18n-en]');
-    for (var j = 0; j < inlineEls.length; j++) {
-      var el = inlineEls[j];
-      el.textContent = el.getAttribute('data-i18n-' + currentLocale) ||
-                       el.getAttribute('data-i18n-en');
-    }
-
-    // data-i18n-count + data-i18n-unit → "N translated-word"
-    var unitEls = document.querySelectorAll('[data-i18n-unit]');
-    for (var k = 0; k < unitEls.length; k++) {
-      var uel = unitEls[k];
-      uel.textContent = uel.getAttribute('data-i18n-count') + ' ' + t(uel.getAttribute('data-i18n-unit'));
+      var el = els[i];
+      el.innerHTML = el.getAttribute('data-i18n-' + currentLocale) ||
+                     el.getAttribute('data-i18n-en');
     }
 
     // Update <title>
@@ -240,7 +212,10 @@
   var deferredPrompt = null;
   var installBtn = document.createElement('button');
   installBtn.className = 'install-btn';
-  installBtn.innerHTML = '<span class="install-icon">&#8615;</span> ' + t('install.button');
+  var icon = '<span class="install-icon">&#8615;</span> ';
+  installBtn.dataset.i18nEn = icon + (((i18nData.en || {}).install || {}).button || 'Add to Home Screen');
+  installBtn.dataset.i18nEs = icon + (((i18nData.es || {}).install || {}).button || 'Add to Home Screen');
+  installBtn.innerHTML = installBtn.getAttribute('data-i18n-' + currentLocale);
   document.body.appendChild(installBtn);
 
   window.addEventListener('beforeinstallprompt', function (e) {
@@ -279,7 +254,7 @@
       if (!tip) {
         tip = document.createElement('div');
         tip.className = 'ios-install-tip';
-        tip.innerHTML = t('install.ios_hint');
+        tip.innerHTML = ((i18nData[currentLocale] || {}).install || {}).ios_hint || '';
         document.body.appendChild(tip);
         setTimeout(function () { if (tip) tip.remove(); }, 5000);
       }

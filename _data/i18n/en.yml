@@ -13,18 +13,6 @@ months:
   - Nov
   - Dec
 
-nav:
-  lang_label: ES
-
-rutina:
-  title: "GymLog test"
-  subtitle: "Track your gym routines, week by week."
-  section_routines: Routines
-  section_exercises: Exercises
-  card_exercises: exercises
-  card_days: days
-  card_groups: groups
-
 install:
   button: "Add to Home Screen"
   ios_hint: "Tap <strong>Share ⬆</strong> → <strong>More···</strong> → <strong>Add to Home Screen</strong>"
