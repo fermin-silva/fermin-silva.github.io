@@ -20,12 +20,10 @@ rutina:
   title: "GymLog test"
   subtitle: "Registra tus rutinas de gym, semana a semana."
   section_routines: Rutinas
+  section_exercises: Ejercicios
   card_exercises: ejercicios
   card_days: "días"
   card_groups: grupos
-
-routine:
-  section_exercises: Ejercicios
 
 install:
   button: "Agregar a pantalla de inicio"
