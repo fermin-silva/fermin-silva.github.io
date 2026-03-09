@@ -29,8 +29,16 @@
   var currentLocale = getLocale();
 
   function t(key) {
-    var lang = i18nData[currentLocale] || i18nData[FALLBACK] || {};
-    return lang[key] || (i18nData[FALLBACK] || {})[key] || key;
+    function resolve(obj, key) {
+      var parts = key.split('.');
+      for (var i = 0; i < parts.length; i++) {
+        if (obj == null || typeof obj !== 'object') return undefined;
+        obj = obj[parts[i]];
+      }
+      return (obj != null && typeof obj !== 'object') ? String(obj) : undefined;
+    }
+    var lang = i18nData[currentLocale] || {};
+    return resolve(lang, key) || resolve(i18nData[FALLBACK] || {}, key) || key;
   }
 
   function applyLocale() {
@@ -229,7 +237,7 @@
   var deferredPrompt = null;
   var installBtn = document.createElement('button');
   installBtn.className = 'install-btn';
-  installBtn.innerHTML = '<span class="install-icon">&#8615;</span> ' + t('install_button');
+  installBtn.innerHTML = '<span class="install-icon">&#8615;</span> ' + t('install.button');
   document.body.appendChild(installBtn);
 
   window.addEventListener('beforeinstallprompt', function (e) {
@@ -268,7 +276,7 @@
       if (!tip) {
         tip = document.createElement('div');
         tip.className = 'ios-install-tip';
-        tip.innerHTML = t('ios_install_hint');
+        tip.innerHTML = t('install.ios_hint');
         document.body.appendChild(tip);
         setTimeout(function () { if (tip) tip.remove(); }, 5000);
       }

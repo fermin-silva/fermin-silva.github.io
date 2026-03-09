@@ -1,14 +1,4 @@
 brand: GymLog
-rutina_title: GymLog test
-rutina_subtitle: "Registra tus rutinas de gym, semana a semana."
-install_button: "Agregar a pantalla de inicio"
-ios_install_hint: "Toca <strong>Compartir ⬆</strong> → <strong>Más···</strong> → <strong>Agregar a pantalla de inicio</strong>"
-section_routines: Rutinas
-section_exercises: Ejercicios
-card_exercises: ejercicios
-card_days: "días"
-card_groups: grupos
-lang_label: EN
 months:
   - Ene
   - Feb
@@ -22,3 +12,21 @@ months:
   - Oct
   - Nov
   - Dic
+
+nav:
+  lang_label: EN
+
+landing:
+  title: "GymLog test"
+  subtitle: "Registra tus rutinas de gym, semana a semana."
+  section_routines: Rutinas
+  card_exercises: ejercicios
+  card_days: "días"
+  card_groups: grupos
+
+routine:
+  section_exercises: Ejercicios
+
+install:
+  button: "Agregar a pantalla de inicio"
+  ios_hint: "Toca <strong>Compartir ⬆</strong> → <strong>Más···</strong> → <strong>Agregar a pantalla de inicio</strong>"

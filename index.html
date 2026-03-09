@@ -1,9 +1,15 @@
 ---
 layout: site-default
 title: Home
-hero_title: "Hi, I'm Fermin Silva"
-hero_subtitle: "Software engineer. Building things for the web."
-section_label: "What I Do"
+hero_title:
+  en: "Hi, I'm Fermin Silva"
+  es: "Hola, soy Fermin Silva"
+hero_subtitle:
+  en: "Software engineer. Building things for the web."
+  es: "Ingeniero de software. Construyendo cosas para la web."
+section_label:
+  en: "What I Do"
+  es: "Lo que hago"
 items:
   - title: Projects
     desc: Side projects and things I've built.
@@ -14,12 +20,12 @@ items:
 ---
 
 <div class="hero">
-  <h1 class="hero-title">{{ page.hero_title }}</h1>
-  <p class="hero-subtitle">{{ page.hero_subtitle }}</p>
+  <h1 class="hero-title">{{ page.hero_title.en }}</h1>
+  <p class="hero-subtitle">{{ page.hero_subtitle.en }}</p>
 </div>
 
 <div class="section">
-  <h2 class="section-label">{{ page.section_label }}</h2>
+  <h2 class="section-label">{{ page.section_label.en }}</h2>
   <div class="content-list">
     {% for item in page.items %}
     <a href="{{ item.url | relative_url }}" class="content-item">
