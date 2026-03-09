@@ -28,6 +28,9 @@
 
   var currentLocale = getLocale();
 
+  // Keys use dot notation (e.g. "install.button") to match the nested YAML structure.
+  // JS bracket notation obj['install.button'] treats the dot as a literal character,
+  // so we must split and traverse the object manually.
   function t(key) {
     function resolve(obj, key) {
       var parts = key.split('.');

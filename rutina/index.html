@@ -4,19 +4,19 @@ layout: rutina-default
 
 <div class="hero">
   <h1 class="hero-title"
-      data-i18n-en="{{ site.data.i18n.en.landing.title }}"
-      data-i18n-es="{{ site.data.i18n.es.landing.title }}">
-    {{ site.data.i18n.en.landing.title }}
+      data-i18n-en="{{ site.data.i18n.en.rutina.title }}"
+      data-i18n-es="{{ site.data.i18n.es.rutina.title }}">
+    {{ site.data.i18n.en.rutina.title }}
   </h1>
   <p class="hero-subtitle"
-     data-i18n-en="{{ site.data.i18n.en.landing.subtitle }}"
-     data-i18n-es="{{ site.data.i18n.es.landing.subtitle }}">
-    {{ site.data.i18n.en.landing.subtitle }}
+     data-i18n-en="{{ site.data.i18n.en.rutina.subtitle }}"
+     data-i18n-es="{{ site.data.i18n.es.rutina.subtitle }}">
+    {{ site.data.i18n.en.rutina.subtitle }}
   </p>
 </div>
 
 <div class="section">
-  <h2 class="section-label" data-i18n="landing.section_routines">Routines</h2>
+  <h2 class="section-label" data-i18n="rutina.section_routines">Routines</h2>
   <div class="content-list">
   {% for routine in site.routines %}
     <a href="{{ routine.url | relative_url }}" class="content-item">
@@ -27,11 +27,11 @@ layout: rutina-default
       </div>
       <div class="content-item-desc">
         {% if routine.type == "flat" %}
-          <span data-i18n-count="{{ routine.exercises | size }}" data-i18n-unit="landing.card_exercises">{{ routine.exercises | size }} exercises</span>
+          <span data-i18n-count="{{ routine.exercises | size }}" data-i18n-unit="rutina.card_exercises">{{ routine.exercises | size }} exercises</span>
         {% elsif routine.type == "by_day" %}
-          <span data-i18n-count="{{ routine.days | size }}" data-i18n-unit="landing.card_days">{{ routine.days | size }} days</span>
+          <span data-i18n-count="{{ routine.days | size }}" data-i18n-unit="rutina.card_days">{{ routine.days | size }} days</span>
         {% elsif routine.type == "by_group" %}
-          <span data-i18n-count="{{ routine.groups | size }}" data-i18n-unit="landing.card_groups">{{ routine.groups | size }} groups</span>
+          <span data-i18n-count="{{ routine.groups | size }}" data-i18n-unit="rutina.card_groups">{{ routine.groups | size }} groups</span>
         {% endif %}
       </div>
     </a>

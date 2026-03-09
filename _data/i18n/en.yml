@@ -16,7 +16,7 @@ months:
 nav:
   lang_label: ES
 
-landing:
+rutina:
   title: "GymLog test"
   subtitle: "Track your gym routines, week by week."
   section_routines: Routines
