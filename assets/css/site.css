@@ -91,6 +91,79 @@ a:hover { color: var(--accent-hover); }
 .content-item-meta { color: var(--text-muted); }
 .content-item-desc { color: var(--text-muted); }
 
+
+/* ── Page header with photo ── */
+.page-header--with-photo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.page-header-text {
+  flex: 1;
+}
+
+.photo-lightbox {
+  border: none;
+  background: transparent;
+  padding: 0;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: auto;
+}
+
+.photo-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.photo-lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+}
+
+.page-header-photo {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.page-header-photo img {
+  width: 130%;
+  height: 130%;
+  margin: -15%;
+  object-fit: cover;
+}
+
+/* ── Content item with logo ── */
+.content-item.has-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.content-item-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.content-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.content-item-sep {
+  margin: 0 0.4em;
+}
+
 /* ── Footer ── */
 .site-footer {
   max-width: var(--max-width);
