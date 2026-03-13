@@ -22,92 +22,82 @@ section_exercises:
   </p>
   {% endif %}
 
-  {% if page.type == "flat" %}
+  {% comment %}Detect whether any item uses "group" (→ multiple sections with counters){% endcomment %}
+  {% assign has_groups = false %}
+  {% for item in page.exercises %}
+    {% if item.group %}{% assign has_groups = true %}{% break %}{% endif %}
+  {% endfor %}
+
+  {% if has_groups %}
+
+    {% assign group_open = false %}
+    {% for item in page.exercises %}
+      {% if item.group %}
+        {% if group_open %}</div></div>{% endif %}
+        {% assign grp_en = item.group.en | default: item.group %}
+        {% assign grp_es = item.group.es | default: item.group %}
+        {% assign grp_slug = grp_en | slugify %}
+        <div class="exercise-section" data-section="{{ grp_slug }}">
+          <div class="section-header">
+            <span class="section-label"
+                  data-i18n-en="{{ grp_en }}"
+                  data-i18n-es="{{ grp_es }}">{{ grp_en }}</span>
+            <span class="progress-counter" data-progress="{{ grp_slug }}"></span>
+          </div>
+          <div class="exercise-list">
+        {% assign group_open = true %}
+      {% elsif item.label %}
+        {% assign lbl_en = item.label.en | default: item.label %}
+        {% assign lbl_es = item.label.es | default: item.label %}
+        <div class="exercise-label"
+             data-i18n-en="{{ lbl_en }}"
+             data-i18n-es="{{ lbl_es }}">{{ lbl_en }}</div>
+      {% else %}
+        {% assign ex_en = item.en | default: item %}
+        {% assign ex_es = item.es | default: item %}
+        {% assign ex_id = item.id | default: ex_en | slugify %}
+        {% assign data_key = page.slug | append: "__" | append: ex_id %}
+        <label class="exercise-item" data-key="{{ data_key }}">
+          <input type="checkbox" />
+          <span class="custom-checkbox"></span>
+          <span class="exercise-name"
+                data-i18n-en="{{ ex_en }}"
+                data-i18n-es="{{ ex_es }}">{{ ex_en }}</span>
+          <span class="check-icon">&#10003;</span>
+        </label>
+      {% endif %}
+    {% endfor %}
+    {% if group_open %}</div></div>{% endif %}
+
+  {% else %}
+
+    {% comment %}No groups — flat list, one section, no header counter{% endcomment %}
     <div class="exercise-section" data-section="all">
-      <div class="section-header">
-        <span class="section-label"
-              data-i18n-en="{{ layout.section_exercises.en }}"
-              data-i18n-es="{{ layout.section_exercises.es }}">{{ layout.section_exercises.en }}</span>
-        <span class="progress-counter" data-progress="all">0 / {{ page.exercises | size }}</span>
-      </div>
       <div class="exercise-list">
-        {% for exercise in page.exercises %}
-          {% assign ex_en = exercise.en | default: exercise %}
-          {% assign ex_es = exercise.es | default: exercise %}
-          {% assign ex_id = exercise.id | default: ex_en | slugify %}
-          {% assign data_key = page.slug | append: "__" | append: ex_id %}
-          <label class="exercise-item" data-key="{{ data_key }}">
-            <input type="checkbox" />
-            <span class="custom-checkbox"></span>
-            <span class="exercise-name"
-                  data-i18n-en="{{ ex_en }}"
-                  data-i18n-es="{{ ex_es }}">{{ ex_en }}</span>
-            <span class="check-icon">&#10003;</span>
-          </label>
+        {% for item in page.exercises %}
+          {% if item.label %}
+            {% assign lbl_en = item.label.en | default: item.label %}
+            {% assign lbl_es = item.label.es | default: item.label %}
+            <div class="exercise-label"
+                 data-i18n-en="{{ lbl_en }}"
+                 data-i18n-es="{{ lbl_es }}">{{ lbl_en }}</div>
+          {% else %}
+            {% assign ex_en = item.en | default: item %}
+            {% assign ex_es = item.es | default: item %}
+            {% assign ex_id = item.id | default: ex_en | slugify %}
+            {% assign data_key = page.slug | append: "__" | append: ex_id %}
+            <label class="exercise-item" data-key="{{ data_key }}">
+              <input type="checkbox" />
+              <span class="custom-checkbox"></span>
+              <span class="exercise-name"
+                    data-i18n-en="{{ ex_en }}"
+                    data-i18n-es="{{ ex_es }}">{{ ex_en }}</span>
+              <span class="check-icon">&#10003;</span>
+            </label>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
 
-  {% elsif page.type == "by_day" %}
-    {% for day in page.days %}
-      {% assign day_en = day.label.en | default: day.label %}
-      {% assign day_es = day.label.es | default: day.label %}
-      {% assign day_slug = day_en | slugify %}
-      <details class="exercise-section" data-section="{{ day_slug }}" open>
-        <summary class="section-header">
-          <span class="section-label"
-                data-i18n-en="{{ day_en }}"
-                data-i18n-es="{{ day_es }}">{{ day_en }}</span>
-          <span class="progress-counter" data-progress="{{ day_slug }}">0 / {{ day.exercises | size }}</span>
-        </summary>
-        <div class="exercise-list">
-          {% for exercise in day.exercises %}
-            {% assign ex_en = exercise.en | default: exercise %}
-            {% assign ex_es = exercise.es | default: exercise %}
-            {% assign ex_id = exercise.id | default: ex_en | slugify %}
-            {% assign data_key = page.slug | append: "_" | append: day_slug | append: "_" | append: ex_id %}
-            <label class="exercise-item" data-key="{{ data_key }}">
-              <input type="checkbox" />
-              <span class="custom-checkbox"></span>
-              <span class="exercise-name"
-                    data-i18n-en="{{ ex_en }}"
-                    data-i18n-es="{{ ex_es }}">{{ ex_en }}</span>
-              <span class="check-icon">&#10003;</span>
-            </label>
-          {% endfor %}
-        </div>
-      </details>
-    {% endfor %}
-
-  {% elsif page.type == "by_group" %}
-    {% for group in page.groups %}
-      {% assign grp_en = group.label.en | default: group.label %}
-      {% assign grp_es = group.label.es | default: group.label %}
-      {% assign grp_slug = grp_en | slugify %}
-      <details class="exercise-section" data-section="{{ grp_slug }}" open>
-        <summary class="section-header">
-          <span class="section-label"
-                data-i18n-en="{{ grp_en }}"
-                data-i18n-es="{{ grp_es }}">{{ grp_en }}</span>
-          <span class="progress-counter" data-progress="{{ grp_slug }}">0 / {{ group.exercises | size }}</span>
-        </summary>
-        <div class="exercise-list">
-          {% for exercise in group.exercises %}
-            {% assign ex_en = exercise.en | default: exercise %}
-            {% assign ex_es = exercise.es | default: exercise %}
-            {% assign ex_id = exercise.id | default: ex_en | slugify %}
-            {% assign data_key = page.slug | append: "_" | append: grp_slug | append: "_" | append: ex_id %}
-            <label class="exercise-item" data-key="{{ data_key }}">
-              <input type="checkbox" />
-              <span class="custom-checkbox"></span>
-              <span class="exercise-name"
-                    data-i18n-en="{{ ex_en }}"
-                    data-i18n-es="{{ ex_es }}">{{ ex_en }}</span>
-              <span class="check-icon">&#10003;</span>
-            </label>
-          {% endfor %}
-        </div>
-      </details>
-    {% endfor %}
   {% endif %}
 </div>
