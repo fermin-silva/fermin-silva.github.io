@@ -1,0 +1,105 @@
+---
+layout: site-default
+title: Work
+page_title:
+  en: Work
+  es: Trabajo
+page_subtitle:
+  en: Work experience in Tech, CV and Contact Me
+  es: Experiencia de Trabajo en Tech, CV y Contactame
+experience:
+  - title: Staff Engineer
+    company: Pomelo
+    period: "May 2021 - Present"
+    duration: "+4 yrs"
+    location: "Buenos Aires, Argentina · Remote"
+    logo: pomelo.jpeg
+  - title: Golang Backend Developer
+    company: Toptal
+    period: "Aug 2020 - May 2021"
+    duration: "10 mos"
+    location: "Boston, United States · Remote"
+    logo: toptal.jpeg
+  - title: Senior Software Developer
+    company: Binlogic Inc.
+    period: "Oct 2016 - Mar 2020"
+    duration: "3 yrs 6 mos"
+    location: "Barcelona, Spain · Remote"
+    logo: binlogic.jpeg
+  - title: Java Backend Developer
+    company: Mercadolibre.com
+    period: "Mar 2016 - Oct 2016"
+    duration: "8 mos"
+    location: "Buenos Aires, Argentina"
+    logo: mercadolibre.jpeg
+  - title: Backend Developer
+    company: OLX
+    period: "Sep 2011 - Jan 2016"
+    duration: "4 yrs 5 mos"
+    location: "Buenos Aires, Argentina"
+    logo: olx.jpeg
+education:
+  - title: Universidad Nacional de Educación a Distancia - U.N.E.D.
+    field: "Informatics Engineering, Information Technology"
+    period: "2008 - 2015"
+    location: "Madrid, Spain · Remote"
+    logo: uned.jpeg
+---
+
+<div class="page-header page-header--with-photo">
+  <div class="page-header-text">
+    <h1>{{ page.page_title.en }}</h1>
+    <p>{{ page.page_subtitle.en }}</p>
+  </div>
+  <div class="page-header-photo" onclick="this.nextElementSibling.showModal()">
+    <img src="{{ '/work/static/me.jpeg' | relative_url }}" alt="Fermin Silva">
+  </div>
+  <dialog class="photo-lightbox" onclick="this.close()">
+    <img src="{{ '/work/static/me.jpeg' | relative_url }}" alt="Fermin Silva">
+  </dialog>
+</div>
+
+<div class="section">
+  <h2 class="section-label">Contact</h2>
+  <div class="content-list">
+    <a href="https://www.linkedin.com/in/silvafermin/" target="_blank" rel="noopener noreferrer" class="content-item has-logo">
+      <img src="{{ '/work/static/linkedin.jpeg' | relative_url }}" alt="LinkedIn logo" class="content-item-logo" width="48" height="48">
+      <div class="content-item-body">
+        <div class="content-item-title">LinkedIn</div>
+        <div class="content-item-desc">linkedin.com/in/silvafermin</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-label">Experience</h2>
+  <div class="content-list">
+    {% for item in page.experience %}
+    <div class="content-item has-logo">
+      <img src="{{ '/work/static/' | append: item.logo | relative_url }}" alt="{{ item.company }} logo" class="content-item-logo" width="48" height="48">
+      <div class="content-item-body">
+        <div class="content-item-title">{{ item.title }}</div>
+        <div class="content-item-meta">{{ item.company }}{% if item.type %} · {{ item.type }}{% endif %} <span class="content-item-sep">|</span> {{ item.duration }}</div>
+        <div class="content-item-desc">{{ item.location }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-label">Education</h2>
+  <div class="content-list">
+    {% for item in page.education %}
+    <div class="content-item has-logo">
+      <img src="{{ '/work/static/' | append: item.logo | relative_url }}" alt="{{ item.title }} logo" class="content-item-logo" width="48" height="48">
+      <div class="content-item-body">
+        <div class="content-item-title">{{ item.title }}</div>
+        <div class="content-item-meta">{{ item.field }} <span class="content-item-sep">|</span> {{ item.period }}</div>
+        <div class="content-item-desc">{{ item.location }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
