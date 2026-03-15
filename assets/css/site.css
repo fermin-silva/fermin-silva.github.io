@@ -164,6 +164,16 @@ a:hover { color: var(--accent-hover); }
   margin: 0 0.4em;
 }
 
+.link-item .content-item-desc {
+  color: var(--accent);
+}
+.link-item::after {
+  content: '↗';
+  color: var(--accent);
+  margin-left: auto;
+  font-size: 1rem;
+}
+
 /* ── Footer ── */
 .site-footer {
   max-width: var(--max-width);
