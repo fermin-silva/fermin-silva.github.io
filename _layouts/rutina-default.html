@@ -4,6 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{% if page.name.en %}{{ page.name.en }} — {% elsif page.name %}{{ page.name }} — {% endif %}GymLog</title>
+
+  <!-- SEO and Discovery Meta Tags -->
+  <meta name="description" content="{% if page.layout == 'rutina-routine' %}{{ page.name.en | default: page.name }}: {{ page.desc.en | default: page.desc }}{% else %}GymLog: Track your gym routines, week by week. Bilingual fitness app with customizable workout tracking.{% endif %}">
+  <meta name="keywords" content="{% if page.layout == 'rutina-routine' %}{{ page.name.en | default: page.name | downcase }}, gym routine, workout, fitness{% else %}gym tracking, fitness app, workout tracker, exercise log, fitness routine{% endif %}">
+  <meta name="author" content="Fermin Silva">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+  <!-- OpenGraph Tags for Maximum Social/LLM Discoverability -->
+  <meta property="og:type" content="{% if page.layout == 'rutina-routine' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{% if page.name.en %}{{ page.name.en }}{% elsif page.name %}{{ page.name }}{% else %}GymLog{% endif %} — Gym Routine Tracker">
+  <meta property="og:description" content="{% if page.layout == 'rutina-routine' %}{{ page.name.en | default: page.name }}: {{ page.desc.en | default: page.desc }}{% else %}Track your gym routines, week by week. A bilingual fitness app for managing workouts.{% endif %}">
+  <meta property="og:url" content="https://fermin-silva.github.io{{ page.url }}">
+  <meta property="og:site_name" content="GymLog">
+
+  <!-- Twitter Card for Social Sharing -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{% if page.name.en %}{{ page.name.en }}{% elsif page.name %}{{ page.name }}{% else %}GymLog{% endif %}">
+  <meta name="twitter:description" content="{% if page.layout == 'rutina-routine' %}{{ page.desc.en | default: page.desc }}{% else %}Track your gym routines with GymLog - a bilingual PWA fitness tracker{% endif %}">
+
+  <!-- Canonical Links for SEO -->
+  <link rel="canonical" href="https://fermin-silva.github.io{{ page.url }}">
+
+  <!-- LLM Optimization: Explicit Links for AI Crawlers -->
+  <link rel="alternate" type="text/html" href="https://fermin-silva.github.io/rutina/">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
@@ -16,6 +41,81 @@
   <meta name="apple-mobile-web-app-title" content="GymLog">
   <link rel="apple-touch-icon" href="{{ '/assets/icons/icon-192.svg' | relative_url }}">
   <script id="i18n-data" type="application/json">{"en":{{ site.data.i18n.en | jsonify }},"es":{{ site.data.i18n.es | jsonify }}}</script>
+
+  <!-- JSON-LD Structured Data for LLM and Search Engine Understanding -->
+  {% if page.layout == 'rutina-default' %}
+    <!-- Rutina App Hub Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GymLog",
+      "description": "A bilingual PWA for tracking gym routines week by week. Built with Jekyll and vanilla JS.",
+      "url": "https://fermin-silva.github.io/rutina/",
+      "applicationCategory": "HealthAndFitnessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Fermin Silva",
+        "url": "https://fermin-silva.github.io"
+      },
+      "inLanguage": ["en", "es"],
+      "featureList": [
+        "Track multiple gym routines",
+        "Bilingual interface (English/Spanish)",
+        "PWA with offline support",
+        "Responsive mobile design"
+      ]
+    }
+    </script>
+  {% elsif page.layout == 'rutina-routine' %}
+    <!-- Individual Routine Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationEvent",
+      "name": "{{ page.name.en | default: page.name }} Routine",
+      "description": "{{ page.desc.en | default: page.desc }}",
+      "url": "https://fermin-silva.github.io{{ page.url }}",
+      "educationalLevel": "General",
+      "learningResourceType": "Workout",
+      "author": {
+        "@type": "Person",
+        "name": "Fermin Silva"
+      },
+      "isPartOf": {
+        "@type": "SoftwareApplication",
+        "name": "GymLog",
+        "url": "https://fermin-silva.github.io/rutina/"
+      }
+    }
+    </script>
+
+    <!-- Exercise List Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Collection",
+      "name": "{{ page.name.en | default: page.name }} - Exercise List",
+      "description": "Complete list of exercises in the {{ page.name.en | default: page.name }} routine",
+      "hasPart": [
+        {% for exercise in page.exercises %}
+          {% if exercise.id %}
+          {
+            "@type": "Thing",
+            "name": "{{ exercise.en | default: exercise.es }}"
+            {% if forloop.last %}{% else %},{% endif %}
+          }
+          {% endif %}
+        {% endfor %}
+      ]
+    }
+    </script>
+  {% endif %}
 </head>
 <body>
   {% include rutina-navbar.html %}
