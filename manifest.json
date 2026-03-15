@@ -1,6 +1,6 @@
 {
-  "name": "GymLog",
-  "short_name": "GymLog",
+  "name": "Rutinario",
+  "short_name": "Rutinario",
   "start_url": "/rutina/routines/ppl/",
   "scope": "/rutina/",
   "display": "standalone",

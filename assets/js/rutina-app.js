@@ -45,7 +45,7 @@
     if (rp) {
       var rName = rp.getAttribute('data-name-' + currentLocale) ||
                   rp.getAttribute('data-name-en');
-      if (rName) document.title = rName + ' \u2014 GymLog';
+      if (rName) document.title = rName + ' \u2014 Rutinario';
     }
   }
 
@@ -56,6 +56,11 @@
       currentLocale = currentLocale === 'en' ? 'es' : 'en';
       setLocale(currentLocale);
       applyLocale();
+      // Close nav dropdown
+      if (navLinks) {
+        navLinks.classList.remove('open');
+        if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+      }
       // Re-render week label if on routine page
       if (typeof renderWeek === 'function') renderWeek();
     });
@@ -111,11 +116,12 @@
   function formatWeekLabel(monday) {
     var langData = i18nData[currentLocale] || i18nData[FALLBACK] || {};
     var months = langData.months || ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var weekLabel = routinePage.dataset['weekLabel' + (currentLocale === 'es' ? 'Es' : 'En')] || 'Week';
     var sunday = new Date(monday);
     sunday.setDate(monday.getDate() + 6);
-    var start = months[monday.getMonth()] + ' ' + monday.getDate();
-    var end = months[sunday.getMonth()] + ' ' + sunday.getDate();
-    return start + ' \u2013 ' + end;
+    var monthStart = months[monday.getMonth()];
+    var monthEnd = months[sunday.getMonth()];
+    return weekLabel + ' ' + monday.getDate() + '/' + monthStart + ' \u2192 ' + sunday.getDate() + '/' + monthEnd;
   }
 
   function storageKey() {

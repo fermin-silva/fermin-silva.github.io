@@ -3,11 +3,16 @@ layout: rutina-default
 section_exercises:
   en: Exercises
   es: Ejercicios
+week_label:
+  en: Week
+  es: Semana
 ---
 
 <div class="routine-page" data-slug="{{ page.slug }}"
      data-name-en="{{ page.name.en | default: page.name }}"
-     data-name-es="{{ page.name.es | default: page.name }}">
+     data-name-es="{{ page.name.es | default: page.name }}"
+     data-week-label-en="{{ layout.week_label.en }}"
+     data-week-label-es="{{ layout.week_label.es }}">
 
   <h1 class="routine-title"
       data-i18n-en="{{ page.name.en | default: page.name }}"
