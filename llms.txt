@@ -1,0 +1,27 @@
+# Fermin Silva
+
+> Software engineer focused on backend and fintech, based in Buenos Aires. Also a photographer.
+
+## About
+
+Fermin Silva is a Staff Engineer at Pomelo (fintech), with 10+ years of backend experience across Go, Java, and distributed systems. Previously at Toptal, Binlogic, MercadoLibre, and OLX.
+
+## Pages
+
+- [Home](https://fermin-silva.github.io/): Portfolio hub
+- [Work](https://fermin-silva.github.io/work/): Full work experience, education history, and LinkedIn contact
+- [Projects](https://fermin-silva.github.io/projects/): Software projects built by Fermin
+- [Photos](https://fermin-silva.github.io/photos/): Photography and artistic projects
+
+## GymLog (Rutina)
+
+GymLog is a bilingual (English/Spanish) PWA for tracking gym routines week by week. Built with Jekyll and vanilla JS. Free, open, installable on mobile.
+
+- [GymLog App](https://fermin-silva.github.io/rutina/): Main app — lists all available routines
+- [Full Body Routine](https://fermin-silva.github.io/rutina/routines/fullbody/): All major muscle groups in one session. Compound lifts, maximum efficiency. Includes: Squat, Deadlift, Bench Press, Overhead Press, Pull Ups, Bent Over Row, Hip Thrust, Hack Squat, Lat Pulldown, Face Pull, Biceps Curl, Triceps extensions, and more.
+- [Push Pull Legs Routine](https://fermin-silva.github.io/rutina/routines/ppl/): Three-day split by movement pattern. Push: Bench Press, Overhead Press, Lateral Raises, Tricep Dips. Pull: Pull Ups, Barbell Row, Bicep Curl, Face Pulls. Legs: Squat, Romanian Deadlift, Leg Press, Calf Raise.
+
+## Optional
+
+- [sitemap.xml](https://fermin-silva.github.io/sitemap.xml)
+- [LinkedIn](https://www.linkedin.com/in/silvafermin/)

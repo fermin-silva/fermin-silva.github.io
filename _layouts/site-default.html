@@ -4,12 +4,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+
+  <!-- Meta Tags for SEO and Social Sharing -->
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Software engineer and photographer based in Buenos Aires{% endif %}">
+  <meta name="author" content="Fermin Silva">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+  <!-- OpenGraph Tags for Social Media -->
+  <meta property="og:type" content="{% if page.layout == 'rutina-routine' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}Software engineer and photographer based in Buenos Aires{% endif %}">
+  <meta property="og:url" content="https://fermin-silva.github.io{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}Software engineer and photographer based in Buenos Aires{% endif %}">
+
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://fermin-silva.github.io{{ page.url }}">
+
+  <!-- Author Links -->
+  <link rel="author" href="https://www.linkedin.com/in/silvafermin/">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+
   {% seo %}
+
+  <!-- JSON-LD Structured Data for LLM and Search Engine Optimization -->
+  {% if page.url == "/" %}
+    <!-- Home Page Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Fermin Silva",
+      "url": "https://fermin-silva.github.io",
+      "jobTitle": "Staff Engineer",
+      "image": "https://fermin-silva.github.io/work/static/me.jpeg",
+      "sameAs": [
+        "https://www.linkedin.com/in/silvafermin/",
+        "https://github.com"
+      ],
+      "description": "Software engineer with expertise in backend development, fintech, and photography",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Pomelo"
+      }
+    }
+    </script>
+  {% elsif page.layout == "site-default" and page.title %}
+    <!-- General Page Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "{{ page.title }}",
+      "url": "https://fermin-silva.github.io{{ page.url }}",
+      "description": "{% if page.description %}{{ page.description }}{% else %}{{ page.title }} page{% endif %}",
+      "author": {
+        "@type": "Person",
+        "name": "Fermin Silva"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Fermin Silva",
+        "sameAs": "https://www.linkedin.com/in/silvafermin/"
+      },
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}"
+    }
+    </script>
+  {% endif %}
 </head>
 <body>
   {% include site-header.html %}

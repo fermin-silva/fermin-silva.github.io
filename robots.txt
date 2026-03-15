@@ -1,0 +1,29 @@
+# robots.txt
+# Allow all crawlers, with special guidelines for different crawler types
+
+User-agent: *
+Allow: /
+Disallow: /_*
+Disallow: .git/
+Disallow: /assets/
+
+# Specifically encourage LLM crawlers to index Rutina content
+# LLM crawlers (Claude, GPT crawlers, etc.) should have access to routine data
+User-agent: GPTBot
+User-agent: CCBot
+User-agent: Claude-Web
+User-agent: anthropic-ai
+Allow: /
+Allow: /rutina/
+Allow: /rutina/routines/
+
+# Standard search engine crawlers
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Slurp
+Allow: /
+
+Sitemap: https://fermin-silva.github.io/sitemap.xml
+
+# Crawl delay for resource efficiency
+Crawl-delay: 1
