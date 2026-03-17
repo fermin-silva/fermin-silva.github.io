@@ -79,6 +79,25 @@
   // ── Apply locale immediately (before routine logic) ──
   applyLocale();
 
+  // ── Truncated / expandable (generic — works on any page) ──
+  var truncatedEls = document.querySelectorAll('.truncated');
+  for (var i = 0; i < truncatedEls.length; i++) {
+    (function (el) {
+      if (el.scrollHeight <= el.offsetHeight + 2) {
+        el.classList.add('is-expanded');
+        return;
+      }
+      el.addEventListener('click', function () {
+        el.style.maxHeight = el.scrollHeight + 'px';
+        el.classList.add('is-expanded');
+        el.addEventListener('transitionend', function cleanup() {
+          el.style.maxHeight = '';
+          el.removeEventListener('transitionend', cleanup);
+        });
+      });
+    })(truncatedEls[i]);
+  }
+
   // ══════════════════════════════════════
   // ── Routine page logic ──
   // ══════════════════════════════════════

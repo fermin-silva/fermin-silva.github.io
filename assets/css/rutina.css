@@ -125,35 +125,29 @@ body {
 .routine-title {
   font-family: var(--font-heading);
   font-size: 1.55rem;
-  font-size: 1.55rem;
   font-weight: 700;
   color: var(--accent);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.routine-desc {
+  --truncate-height: 2.8rem;
+  --truncate-fade: var(--beige-100);
+  margin-bottom: 1.5rem;
 }
 
 .routine-subtitle {
   font-size: 0.9rem;
   color: var(--ink-light);
-  margin-bottom: 1.5rem;
-  color: var(--accent);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 
-.routine-subtitle {
-  font-size: 0.9rem;
-  color: var(--ink-light);
-  margin-bottom: 1.5rem;
-  white-space: pre-line;
+.routine-subtitle:last-child {
+  margin-bottom: 0;
 }
 
-/* ── Week bar (sub-navbar, mirrors .navbar pattern) ── */
 /* ── Week bar (sub-navbar, mirrors .navbar pattern) ── */
 .week-bar {
-  background: var(--beige-200);
-  border-bottom: 1px solid var(--beige-300);
-}
-
-.week-bar-inner {
   background: var(--beige-200);
   border-bottom: 1px solid var(--beige-300);
 }
@@ -244,7 +238,6 @@ div.exercise-section > .section-header {
 .section-label {
   color: var(--brown-700);
   border-bottom: 1px solid var(--beige-300);
-  padding-left: 0;
   padding-left: 0;
 }
 

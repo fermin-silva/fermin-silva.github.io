@@ -3,8 +3,8 @@ name:
   en: Push Pull Legs
   es: Empuje Jalón Piernas
 desc:
-  en: Three-day split by movement pattern. Push, pull, and legs, each with its own session.
-  es: División de tres días por patrón de movimiento. Empuje, jalón y piernas, cada uno en su sesión.
+  - en: "Three-day split by movement pattern. Push, pull, and legs, each with its own session."
+    es: "División de tres días por patrón de movimiento. Empuje, jalón y piernas, cada uno en su sesión."
 slug: ppl
 exercises:
   - group:
