@@ -20,11 +20,13 @@ week_label:
     {{ page.name.en | default: page.name }}
   </h1>
   {% if page.desc %}
-  <p class="routine-subtitle"
-     data-i18n-en="{{ page.desc.en | default: page.desc }}"
-     data-i18n-es="{{ page.desc.es | default: page.desc }}">
-    {{ page.desc.en | default: page.desc }}
-  </p>
+  <div class="routine-desc truncated">
+    {% for p in page.desc %}
+    <p class="routine-subtitle"
+       data-i18n-en="{{ p.en }}"
+       data-i18n-es="{{ p.es }}">{{ p.en }}</p>
+    {% endfor %}
+  </div>
   {% endif %}
 
   {% comment %}Detect whether any item uses "group" (→ multiple sections with counters){% endcomment %}

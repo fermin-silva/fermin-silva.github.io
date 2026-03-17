@@ -3,21 +3,12 @@ name:
   en: Full Body Intense
   es: Cuerpo Completo Intenso
 desc:
-  en: |
-    3-day full body routine focused on heavy compound lifts.
-
-    Distribute the main compound lifts evenly throughout the week.
-    Use accessories to complement the main lifts depending on fatigue.
-
-    Strength-focused training with frequency 3 for each muscle group.
-
-  es: |
-    Rutina full body de 3 días enfocada en levantamientos compuestos pesados.
-
-    Distribuí los compuestos principales de forma pareja a lo largo de la semana.
-    Usá accesorios para complementar según la fatiga.
-
-    Enfoque en fuerza y frecuencia 3 para cada músculo.
+  - en: "3-day full body routine focused on heavy compound lifts."
+    es: "Rutina full body de 3 días enfocada en levantamientos compuestos pesados."
+  - en: "Distribute the main compound lifts evenly throughout the week. Use accessories to complement the main lifts depending on fatigue."
+    es: "Distribuí los compuestos principales de forma pareja a lo largo de la semana. Usá accesorios para complementar según la fatiga."
+  - en: "Strength-focused training with frequency 3 for each muscle group."
+    es: "Enfoque en fuerza y frecuencia 3 para cada músculo."
 slug: fullbody
 exercises:
   - group:

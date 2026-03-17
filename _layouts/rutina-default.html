@@ -6,7 +6,8 @@
   <title>{% if page.name.en %}{{ page.name.en }} — {% elsif page.name %}{{ page.name }} — {% endif %}Rutinario</title>
 
   <!-- SEO and Discovery Meta Tags -->
-  <meta name="description" content="{% if page.layout == 'rutina-routine' %}{{ page.name.en | default: page.name }}: {{ page.desc.en | default: page.desc }}{% else %}Rutinario: Track your gym routines, week by week. Bilingual fitness app with customizable workout tracking.{% endif %}">
+  {% if page.layout == 'rutina-routine' %}{% assign _desc_text = page.desc | map: 'en' | join: ' ' %}{% endif %}
+  <meta name="description" content="{% if page.layout == 'rutina-routine' %}{{ page.name.en | default: page.name }}: {{ _desc_text }}{% else %}Rutinario: Track your gym routines, week by week. Bilingual fitness app with customizable workout tracking.{% endif %}">
   <meta name="keywords" content="{% if page.layout == 'rutina-routine' %}{{ page.name.en | default: page.name | downcase }}, gym routine, workout, fitness{% else %}gym tracking, fitness app, workout tracker, exercise log, fitness routine{% endif %}">
   <meta name="author" content="Fermin Silva">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -14,14 +15,14 @@
   <!-- OpenGraph Tags for Maximum Social/LLM Discoverability -->
   <meta property="og:type" content="{% if page.layout == 'rutina-routine' %}article{% else %}website{% endif %}">
   <meta property="og:title" content="{% if page.name.en %}{{ page.name.en }}{% elsif page.name %}{{ page.name }}{% else %}Rutinario{% endif %} — Gym Routine Tracker">
-  <meta property="og:description" content="{% if page.layout == 'rutina-routine' %}{{ page.name.en | default: page.name }}: {{ page.desc.en | default: page.desc }}{% else %}Track your gym routines, week by week. A bilingual fitness app for managing workouts.{% endif %}">
+  <meta property="og:description" content="{% if page.layout == 'rutina-routine' %}{{ page.name.en | default: page.name }}: {{ _desc_text }}{% else %}Track your gym routines, week by week. A bilingual fitness app for managing workouts.{% endif %}">
   <meta property="og:url" content="https://fermin-silva.github.io{{ page.url }}">
   <meta property="og:site_name" content="Rutinario">
 
   <!-- Twitter Card for Social Sharing -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{% if page.name.en %}{{ page.name.en }}{% elsif page.name %}{{ page.name }}{% else %}Rutinario{% endif %}">
-  <meta name="twitter:description" content="{% if page.layout == 'rutina-routine' %}{{ page.desc.en | default: page.desc }}{% else %}Track your gym routines with Rutinario - a bilingual PWA fitness tracker{% endif %}">
+  <meta name="twitter:description" content="{% if page.layout == 'rutina-routine' %}{{ _desc_text }}{% else %}Track your gym routines with Rutinario - a bilingual PWA fitness tracker{% endif %}">
 
   <!-- Canonical Links for SEO -->
   <link rel="canonical" href="https://fermin-silva.github.io{{ page.url }}">
@@ -79,7 +80,7 @@
       "@context": "https://schema.org",
       "@type": "EducationEvent",
       "name": "{{ page.name.en | default: page.name }} Routine",
-      "description": "{{ page.desc.en | default: page.desc }}",
+      "description": "{{ _desc_text }}",
       "url": "https://fermin-silva.github.io{{ page.url }}",
       "educationalLevel": "General",
       "learningResourceType": "Workout",
