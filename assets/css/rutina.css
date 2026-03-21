@@ -25,6 +25,10 @@ body {
   color: var(--ink);
 }
 
+.main-content {
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+}
+
 /* ── Navbar: sticky bar + hamburger dropdown ── */
 
 /* Translucent blur navbar — only in standalone (installed app) */
@@ -407,4 +411,27 @@ div.exercise-section > .section-header {
 .install-icon {
   font-size: 1.1rem;
   line-height: 1;
+}
+
+/* ── Info steps (reusable titled step list) ── */
+.section--spaced {
+  margin-top: 3rem;
+}
+
+.info-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-step-title,
+.info-step-desc {
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+.info-step-title {
+  font-weight: 500;
+  margin: 0 0 0.4rem 0;
 }
