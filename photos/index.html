@@ -25,9 +25,9 @@ page_subtitle:
 <div class="section">
   <div class="gallery">
     {% for photo in site.data.gallery %}
-    <a class="gallery-item" style="flex-grow: {{ photo.ar }}; flex-basis: calc({{ photo.ar }} * 180px)" href="{{ '/photos/static/gallery/full/' | append: photo.file | append: '.jpg' | relative_url }}" data-full="{{ '/photos/static/gallery/full/' | append: photo.file | append: '.jpg' | relative_url }}">
+    <button class="gallery-item" style="--ar: {{ photo.ar }}" data-full="{{ '/photos/static/gallery/full/' | append: photo.file | append: '.jpg' | relative_url }}" aria-label="Open photo {{ photo.file }}">
       <img src="{{ '/photos/static/gallery/thumb/' | append: photo.file | append: '.jpg' | relative_url }}" width="{{ photo.w }}" height="{{ photo.h }}" alt="Photo {{ photo.file }}" loading="lazy">
-    </a>
+    </button>
     {% endfor %}
   </div>
 </div>
@@ -40,7 +40,6 @@ page_subtitle:
 document.querySelector('.gallery').addEventListener('click', function(e) {
   var item = e.target.closest('.gallery-item');
   if (!item) return;
-  e.preventDefault();
   var dialog = document.getElementById('gallery-lightbox');
   dialog.querySelector('img').src = item.dataset.full;
   dialog.showModal();

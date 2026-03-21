@@ -20,6 +20,39 @@ card_days:
 card_groups:
   en: groups
   es: grupos
+
+section_how_it_works:
+  en: How It Works
+  es: Cómo Funciona
+
+how_it_works_steps:
+  - title:
+      en: "1. Pick a gym routine"
+      es: "1. Elegí una rutina de gimnasio"
+    desc:
+      en: <p>Choose a workout routine from the list. Each one is structured by day or muscle group — no guessing what to train each session.</p>
+      es: <p>Elegí una rutina de entrenamiento de la lista. Cada una está organizada por día o grupo muscular, sin tener que adivinar qué entrenar cada sesión.</p>
+
+  - title:
+      en: "2. Track exercises week by week"
+      es: "2. Registrá ejercicios semana a semana"
+    desc:
+      en: <p>Tap any exercise to mark it done. Each week resets automatically so you always start fresh — previous weeks are saved for reference.</p>
+      es: <p>Tocá un ejercicio para marcarlo como hecho. Cada semana se reinicia automáticamente para que siempre empieces de cero — las semanas anteriores quedan guardadas.</p>
+
+  - title:
+      en: "3. Review your workout history"
+      es: "3. Revisá tu historial de entrenamientos"
+    desc:
+      en: <p>Browse past weeks to see your training history. Helps you adjust weight, spot missed sessions, or confirm you've been consistent.</p>
+      es: <p>Navegá por semanas anteriores para ver tu historial de entrenamiento. Útil para ajustar el peso, detectar sesiones que te saltaste o confirmar que estás siendo constante.</p>
+
+  - title:
+      en: "4. Install as an app — no account needed"
+      es: "4. Instalala como app — sin cuenta"
+    desc:
+      en: <p>Rutinario works offline and requires no login. If you train regularly, open your routine and install it to your home screen for quick access. All data stays on your device.</p>
+      es: <p>Rutinario funciona sin conexión y no requiere registro. Si entrenás seguido, abrí tu rutina e instalala en la pantalla de inicio para acceder rápido. Todos los datos quedan en tu dispositivo.</p>
 ---
 
 <div class="hero">
@@ -71,3 +104,5 @@ card_groups:
   {% endfor %}
   </div>
 </div>
+
+{% include info-steps.html title=page.section_how_it_works steps=page.how_it_works_steps %}
