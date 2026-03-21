@@ -1,0 +1,48 @@
+---
+layout: site-default
+title: Photos
+page_title:
+  en: Photos
+  es: Fotos
+page_subtitle:
+  en: Photos and Artistic Projects
+  es: Fotos y Proyectos Artísticos
+---
+
+<div class="page-header page-header--with-photo">
+  <div class="page-header-text">
+    <h1>{{ page.page_title.en }}</h1>
+    <p>{{ page.page_subtitle.en }}</p>
+  </div>
+  <div class="page-header-photo" onclick="this.nextElementSibling.showModal()">
+    <img src="{{ '/photos/static/me.jpeg' | relative_url }}" alt="Fermin Silva">
+  </div>
+  <dialog class="photo-lightbox" onclick="this.close()">
+    <img src="{{ '/photos/static/me.jpeg' | relative_url }}" alt="Fermin Silva">
+  </dialog>
+</div>
+
+<div class="section">
+  <div class="gallery">
+    {% for photo in site.data.gallery %}
+    <a class="gallery-item" style="flex-grow: {{ photo.ar }}; flex-basis: calc({{ photo.ar }} * 180px)" href="{{ '/photos/static/gallery/full/' | append: photo.file | append: '.jpg' | relative_url }}" data-full="{{ '/photos/static/gallery/full/' | append: photo.file | append: '.jpg' | relative_url }}">
+      <img src="{{ '/photos/static/gallery/thumb/' | append: photo.file | append: '.jpg' | relative_url }}" width="{{ photo.w }}" height="{{ photo.h }}" alt="Photo {{ photo.file }}" loading="lazy">
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<dialog id="gallery-lightbox" class="photo-lightbox" onclick="this.close()">
+  <img src="" alt="Full size photo">
+</dialog>
+
+<script>
+document.querySelector('.gallery').addEventListener('click', function(e) {
+  var item = e.target.closest('.gallery-item');
+  if (!item) return;
+  e.preventDefault();
+  var dialog = document.getElementById('gallery-lightbox');
+  dialog.querySelector('img').src = item.dataset.full;
+  dialog.showModal();
+});
+</script>
