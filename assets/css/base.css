@@ -1,7 +1,4 @@
-/* ══════════════════════════════════════
-   base.css — shared framework
-   Both site and rutina load this first.
-   ══════════════════════════════════════ */
+/* Base site framework */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -23,16 +20,6 @@ body {
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
-/* ── Layout column ── */
-.col {
-  max-width: var(--max-width, 640px);
-  margin: 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  width: 100%;
-}
-
-/* ── Navbar ── */
 .navbar {
   position: sticky;
   top: 0;
@@ -57,34 +44,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 700;
 }
 
-/* ── Hamburger ── */
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 8px;
-  z-index: 110;
-}
-
-.hamburger-line {
-  display: block;
-  width: 22px;
-  height: 2px;
-  border-radius: 1px;
-  transition: transform 0.2s, opacity 0.2s;
-}
-
-.hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
-  opacity: 0;
-}
-.hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* ── Nav links (shared structure) ── */
 .nav-links {
   list-style: none;
 }
@@ -98,11 +57,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: color 0.15s, border-color 0.15s, background 0.15s;
 }
 
-.nav-separator {
-  margin: 0.25rem 1rem;
-}
-
-/* ── Main content ── */
 .main-content {
   flex: 1;
   max-width: var(--max-width, 640px);
@@ -111,7 +65,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 100%;
 }
 
-/* ── Hero ── */
 .hero {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -128,7 +81,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 1rem;
 }
 
-/* ── Page header (inner pages — left aligned) ── */
 .page-header {
   padding-left: 1.25rem;
   margin-bottom: 1.75rem;
@@ -145,10 +97,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 0.9rem;
 }
 
-/* ── Section ── */
 .section { margin-bottom: 1.75rem; }
 
-/* ── Section label ── */
 .section-label {
   font-size: 0.8rem;
   font-weight: 600;
@@ -159,7 +109,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding-bottom: 0.5rem;
 }
 
-/* ── Content item — unified card component ── */
 .content-list {
   display: flex;
   flex-direction: column;
@@ -192,36 +141,4 @@ a.content-item:hover {
 .content-item-desc {
   font-size: 0.875rem;
   line-height: 1.5;
-}
-
-/* ── Truncated / expandable ── */
-.truncated {
-  --truncate-height: 3em;
-  --truncate-fade: #fff;
-  position: relative;
-  max-height: var(--truncate-height);
-  overflow: hidden;
-  cursor: pointer;
-  transition: max-height 0.3s ease;
-}
-
-.truncated::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2.5em;
-  background: linear-gradient(transparent, var(--truncate-fade));
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-}
-
-.truncated.is-expanded {
-  max-height: none;
-  cursor: default;
-}
-
-.truncated.is-expanded::after {
-  opacity: 0;
 }
