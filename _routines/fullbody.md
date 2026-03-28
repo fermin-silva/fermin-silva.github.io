@@ -10,6 +10,7 @@ desc:
   - en: "Strength-focused training with frequency 3 for each muscle group."
     es: "Enfoque en fuerza y frecuencia 3 para cada músculo."
 slug: fullbody
+percentage-logo: muscle
 exercises:
   - group:
       en: Heavy Compounds
