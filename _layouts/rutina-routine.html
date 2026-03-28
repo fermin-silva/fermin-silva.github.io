@@ -21,7 +21,8 @@ week_label:
       {{ page.name.en | default: page.name }}
     </h1>
     <div class="routine-status" aria-live="polite">
-      {% include rutina-percentage-symbols.html percentage_logo=page['percentage-logo'] %}
+      {% assign percentage_logo = page['percentage-logo'] | default: 'muscle' %}
+      {% include rutina-percentage-symbols.html percentage_logo=percentage_logo %}
       <span class="routine-progress">0%</span>
     </div>
   </div>
