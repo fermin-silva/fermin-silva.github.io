@@ -12,7 +12,6 @@ defaults:
   - scope: { path: "", type: routines }
     values:
       layout: rutina-routine
-      percentage-logo: muscle
 
 plugins:
   - jekyll-feed
