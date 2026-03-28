@@ -1,7 +1,4 @@
-/* ══════════════════════════════════════
-   site.css — dark theme for personal site
-   Loaded after base.css
-   ══════════════════════════════════════ */
+/* Dark theme for the personal site */
 
 :root {
   --bg: #0f1117;
@@ -25,8 +22,6 @@ body {
 a { color: var(--accent); }
 a:hover { color: var(--accent-hover); }
 
-/* ── Navbar: always-visible tab bar, no hamburger ── */
-
 .navbar-inner {
   justify-content: center;
 }
@@ -36,8 +31,6 @@ a:hover { color: var(--accent-hover); }
   color: var(--text);
   letter-spacing: -0.02em;
 }
-
-.hamburger { display: none; }
 
 .nav-links {
   display: flex;
@@ -66,9 +59,6 @@ a:hover { color: var(--accent-hover); }
   border-bottom-color: var(--accent);
 }
 
-.nav-separator { display: none; }
-
-/* ── Hero / page header — dark colors ── */
 .hero {
   padding-top: 0.5rem;
 }
@@ -81,7 +71,6 @@ a:hover { color: var(--accent-hover); }
   border-bottom: 1px solid var(--border);
 }
 
-/* ── Content item — dark card colors ── */
 .content-item {
   background: var(--bg-card);
   border-color: var(--border);
@@ -91,8 +80,6 @@ a:hover { color: var(--accent-hover); }
 .content-item-meta { color: var(--text-muted); }
 .content-item-desc { color: var(--text-muted); }
 
-
-/* ── Page header with photo ── */
 .page-header--with-photo {
   display: flex;
   align-items: center;
@@ -141,7 +128,6 @@ a:hover { color: var(--accent-hover); }
   object-fit: cover;
 }
 
-/* ── Photo gallery ── */
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -183,7 +169,6 @@ a:hover { color: var(--accent-hover); }
   }
 }
 
-/* ── Content item with logo ── */
 .content-item.has-logo {
   display: flex;
   align-items: center;
@@ -217,7 +202,6 @@ a:hover { color: var(--accent-hover); }
   font-size: 1rem;
 }
 
-/* ── Footer ── */
 .site-footer {
   max-width: var(--max-width);
   margin: 0 auto;

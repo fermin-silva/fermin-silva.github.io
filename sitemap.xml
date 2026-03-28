@@ -40,21 +40,11 @@ layout: null
     <priority>0.8</priority>
   </url>
 
-  <!-- Rutina Main Page (High priority for LLM discovery) -->
+  <!-- Rutinario dispatcher -->
   <url>
     <loc>https://fermin-silva.github.io/rutina/</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <!-- Rutina Routines (High priority for fitness-related searches and LLM indexing) -->
-  {% for routine in site.routines %}
-  <url>
-    <loc>https://fermin-silva.github.io/rutina/routines/{{ routine.slug }}</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.5</priority>
   </url>
-  {% endfor %}
 </urlset>
