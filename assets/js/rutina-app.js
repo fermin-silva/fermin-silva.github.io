@@ -111,6 +111,7 @@
   var weekLabel = document.querySelector('.week-label');
   var prevBtn = document.querySelector('.week-prev');
   var nextBtn = document.querySelector('.week-next');
+  var progressEl = routinePage.querySelector('.routine-progress');
   var checkboxes = routinePage.querySelectorAll('.exercise-item input[type="checkbox"]');
 
   if (!prevBtn || !nextBtn || !weekLabel) return;
@@ -147,6 +148,10 @@
     return 'gymlog_' + slug + '_' + getISOWeek(getMondayOfWeek(weekOffset));
   }
 
+  function progressKey() {
+    return storageKey() + '_progress';
+  }
+
   // ── Load / save state ──
 
   function loadState() {
@@ -159,6 +164,18 @@
 
   function saveState(state) {
     localStorage.setItem(storageKey(), JSON.stringify(state));
+  }
+
+  function loadProgress() {
+    try {
+      return JSON.parse(localStorage.getItem(progressKey())) || null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveProgress(progress) {
+    localStorage.setItem(progressKey(), JSON.stringify(progress));
   }
 
   // ── Render ──
@@ -176,6 +193,8 @@
     nextBtn.disabled = weekOffset >= 0;
 
     var state = loadState();
+    var totalItems = 0;
+    var checkedItems = 0;
 
     for (var i = 0; i < checkboxes.length; i++) {
       var cb = checkboxes[i];
@@ -184,23 +203,42 @@
       var checked = !!state[key];
       cb.checked = checked;
       item.classList.toggle('checked', checked);
+      totalItems++;
+      if (checked) checkedItems++;
     }
 
-    updateAllProgress();
+    updateAllProgress(totalItems, checkedItems);
   }
 
   // ── Progress counters ──
 
-  function updateAllProgress() {
+  function updateAllProgress(totalItems, checkedCount) {
     var sections = routinePage.querySelectorAll('.exercise-section');
     for (var i = 0; i < sections.length; i++) {
       var section = sections[i];
       var items = section.querySelectorAll('.exercise-item');
-      var checkedItems = section.querySelectorAll('.exercise-item.checked');
+      var sectionCheckedItems = section.querySelectorAll('.exercise-item.checked');
       var counter = section.querySelector('.progress-counter');
       if (counter) {
-        counter.textContent = checkedItems.length + ' / ' + items.length;
+        counter.textContent = sectionCheckedItems.length + ' / ' + items.length;
       }
+    }
+
+    if (progressEl) {
+      var total = totalItems || 0;
+      var checked = checkedCount || 0;
+      var stored = loadProgress();
+      var pct = stored && stored.total === total && stored.checked === checked && typeof stored.pct === 'number'
+        ? stored.pct
+        : (total ? Math.round((checked / total) * 100) : 0);
+      if (!stored || stored.total !== total || stored.checked !== checked || stored.pct !== pct) {
+        saveProgress({
+          total: total,
+          checked: checked,
+          pct: pct
+        });
+      }
+      progressEl.textContent = pct + '%';
     }
   }
 
@@ -222,13 +260,12 @@
     checkboxes[i].addEventListener('change', function () {
       var item = this.closest('.exercise-item');
       var key = item.dataset.key;
-      item.classList.toggle('checked', this.checked);
-
       var state = loadState();
+
       state[key] = this.checked;
       saveState(state);
 
-      updateAllProgress();
+      render();
     });
   }
 
